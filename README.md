@@ -9,6 +9,7 @@ node v16.17.1
 
 ```
 yarn // 安装依赖
+npx husky init // 启用husky，安装完依赖后初次运行项目需要执行这个指令
 yarn dev:weapp // 运行项目
 ```
 
@@ -77,6 +78,27 @@ git commit的信息格式不对, 需要使用 title(scope): desc的格式
 
 husky - commit-msg hook exited with code 1 (error)
 mac@yuansus taro-vue3 %
+
+```
+
+### 提交规范细分
+
+```
+feat: 新功能
+fix: 修改 bug
+docs: 文档
+perf: 性能相关
+refactor: 代码重构（就是不影响使用，内部结构的调整）
+test: 测试用例
+style: 样式修改
+workflow: 工作流
+build: 项目打包构建相关的配置修改
+ci: 持续集成相关
+revert: 恢复上一次提交（回滚）
+wip: work in progress 工作中 还没完成
+chore: 其他修改（不在上述类型中的修改）
+release: 发版
+deps: 依赖相关的修改
 
 ```
 
