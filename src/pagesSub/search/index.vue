@@ -1,6 +1,4 @@
-<template>
-  search
-</template>
+<template>search</template>
 
 <script lang="ts" setup></script>
 

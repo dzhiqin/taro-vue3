@@ -6,7 +6,7 @@
   "setting": {
     "urlCheck": false,
     "es6": false,
-    "postcss": false,
+    "postcss": true,
     "minified": false
   },
   "compileType": "miniprogram"

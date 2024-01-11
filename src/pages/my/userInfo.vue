@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import Taro from '@tarojs/taro'
+// import Taro from '@tarojs/taro'
 import { computed } from 'vue'
 import { useStore } from '@/stores'
 
@@ -14,7 +14,7 @@ const auth = useStore('auth')
 const userInfo = computed(() => auth.userInfo)
 
 const goUserDetailPage = () => {
-  Taro.navigateTo({ url: '/pages/my/detail/index' })
+  // Taro.navigateTo({ url: '/pages/my/detail/index' })
 }
 </script>
 

@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
-
-npx --no -- commitlint --edit "$1"
+echo "---提交规范检查开始---"
+node ./verifyCommit.js
+echo "---提交规范检查结束---"

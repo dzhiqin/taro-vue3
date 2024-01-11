@@ -1,3 +1,6 @@
+import ComponentsPlugin from 'unplugin-vue-components/webpack'
+import NutUIResolver from '@nutui/auto-import-resolver'
+
 const path = require('path')
 const args = process.argv
 const isOpenDevTools = args.includes('--devtools')
@@ -27,6 +30,11 @@ const config = {
   },
   framework: 'vue3',
   mini: {
+    webpackChain(chain) {
+      chain.plugin('unplugin-vue-components').use(ComponentsPlugin({
+        resolvers: [NutUIResolver({taro: true})]
+      }))
+    },
     postcss: {
       pxtransform: {
         enable: true,
@@ -48,6 +56,11 @@ const config = {
     }
   },
   h5: {
+    webpackChain(chain) {
+      chain.plugin('unplugin-vue-components').use(ComponentsPlugin({
+        resolvers: [NutUIResolver({taro: true})]
+      }))
+    },
     publicPath: '/',
     staticDirectory: 'static',
     postcss: {

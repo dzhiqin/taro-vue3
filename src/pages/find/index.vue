@@ -1,7 +1,7 @@
 <template>
   <nut-searchbar placeholder="请输入书籍" @click="goSearchPage">
     <template v-slot:leftin>
-      <nut-icon size="14" name="search2"></nut-icon>
+      <!-- <add size="14"></add> -->
     </template>
   </nut-searchbar>
 
@@ -14,9 +14,9 @@ import BookList from '@/components/bookList.vue'
 import { usePullDownRefresh } from '@/hooks/life'
 import { ref, onMounted } from 'vue'
 import { getBookList } from '@/services/apis/book'
-
 const goSearchPage = () => {
-  Taro.navigateTo({ url: '/pages/search/index' })
+  // Taro.navigateTo({ url: '/pages/search/index' })
+  console.log('click search ')
 }
 
 const handleBookClick = id => {

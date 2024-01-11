@@ -7,3 +7,5 @@ node_modules/
 .gitlab-ci.yml
 yarn-error.log
 docs/
+.swc/
+yarn.lock

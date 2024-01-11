@@ -1,5 +1,5 @@
 export default {
-  pages: ['pages/create/index', 'pages/find/index', 'pages/my/index'],
+  pages: ['pages/home/home', 'pages/create/index', 'pages/find/index', 'pages/my/index'],
   window: {
     backgroundColor: '#fff',
     backgroundTextStyle: 'light',

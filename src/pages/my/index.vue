@@ -22,7 +22,7 @@ const handleLogin = () => {
     // 模拟后端请求得到token和userInfo
     Taro.setStorageSync('token', 'xxxx')
     auth.setUserInfo({
-      nickName: '林qwe',
+      nickName: 'XXX',
       avatarUrl:
         'https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png'
     })

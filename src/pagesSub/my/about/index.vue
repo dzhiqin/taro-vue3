@@ -1,6 +1,4 @@
-<template>
-  about
-</template>
+<template>about</template>
 
 <script lang="ts" setup></script>
 
