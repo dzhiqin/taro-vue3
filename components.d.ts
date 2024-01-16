@@ -11,8 +11,12 @@ declare module 'vue' {
     EnterView: typeof import('./src/components/basic/enterView.vue')['default']
     NutAvatar: typeof import('@nutui/nutui-taro')['Avatar']
     NutButton: typeof import('@nutui/nutui-taro')['Button']
+    NutGrid: typeof import('@nutui/nutui-taro')['Grid']
+    NutGridItem: typeof import('@nutui/nutui-taro')['GridItem']
     NutNavbar: typeof import('@nutui/nutui-taro')['Navbar']
     NutSearchbar: typeof import('@nutui/nutui-taro')['Searchbar']
+    NutSwiper: typeof import('@nutui/nutui-taro')['Swiper']
+    NutSwiperItem: typeof import('@nutui/nutui-taro')['SwiperItem']
     Welcome: typeof import('./src/components/welcome.vue')['default']
   }
 }

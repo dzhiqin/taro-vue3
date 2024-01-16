@@ -5,3 +5,57 @@
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
 }
+.flex{
+  display: flex;
+}
+.justify-center{
+  justify-content: center;
+}
+.align-center{
+  align-items: center;
+}
+.margin-top {
+  margin-top: 16px;
+}
+.margin-left{
+  margin-left: 16px;
+}
+.margin-right{
+  margin-right: 16px
+}
+.margin-bottom{
+  margin-bottom: 16px
+}
+.margin{
+  margin: 16px
+}
+.padding{
+  padding: 16px;
+}
+.padding-left{
+  padding-left: 16px;
+}
+.pading-right{
+  padding-right: 16px;
+}
+.padding-top{
+  padding-top: 16px;
+}
+.padding-bottom{
+  padding-bottom: 16px
+}
+.text-red {color: #e54d42} /* 嫣红 #e54d42 */
+.text-orange {color: #f37b1d}  /* 桔橙 #f37b1d */
+.text-yellow {color: #fbbd08} /* 明黄 #fbbd08 */
+.text-olive {color: #8dc63f} /* 橄榄 #8dc63f */
+.text-green {color: #39b54a} /* 森绿 #39b54a */
+.text-cyan {color: #1cbbb4} /* 天青 #1cbbb4 */
+.text-blue  {color: #0081ff}/* 海蓝 #0081ff */
+.text-purple {color: #6739b6} /* 姹紫 #6739b6 */
+.text-mauve {color: #9c26b0} /* 木槿 #9c26b0 */
+.text-pink {color: #e03997} /* 桃粉 #e03997 */
+.text-brown {color: #a5673f} /* 棕褐 #a5673f */
+.text-grey  {color: #8799a3}/* 玄灰 #8799a3 */
+.text-gray {color: #aaaaaa} /* 草灰 #aaaaaa */
+.text-black {color: #333333} /* 墨黑 #333333 */
+.text-white {color: #ffffff} /* 雅白 #ffffff */

@@ -4,10 +4,10 @@ import NutUIResolver from '@nutui/auto-import-resolver'
 const path = require('path')
 const args = process.argv
 const isOpenDevTools = args.includes('--devtools')
-
+const platform = process.env.TARO_ENV
 const config = {
-  projectName: 'WechatAppDemo',
-  date: '2021-11-12',
+  projectName: 'TaroVue3',
+  date: '2024-1-12',
   designWidth: 375,
   deviceRatio: {
     640: 2.34 / 2,
@@ -19,9 +19,14 @@ const config = {
     '@': path.resolve(__dirname, '..', 'src')
   },
   sourceRoot: 'src',
-  outputRoot: 'dist',
+  outputRoot: `dist/${platform}`,
   plugins: isOpenDevTools
-    ? ['@tarojs/plugin-html', '@tarojs/plugin-vue-devtools', 'taro-plugin-pinia']
+    ? [
+        '@tarojs/plugin-html',
+        '@tarojs/plugin-vue-devtools',
+        'taro-plugin-pinia',
+        'taro-plugin-compiler-optimization'
+      ]
     : ['@tarojs/plugin-html', 'taro-plugin-pinia'],
   defineConstants: {},
   copy: {
@@ -31,14 +36,24 @@ const config = {
   framework: 'vue3',
   mini: {
     webpackChain(chain) {
-      chain.plugin('unplugin-vue-components').use(ComponentsPlugin({
-        resolvers: [NutUIResolver({taro: true})]
-      }))
+      chain.plugin('unplugin-vue-components').use(
+        ComponentsPlugin({
+          resolvers: [NutUIResolver({ taro: true })]
+        })
+      )
     },
     postcss: {
       pxtransform: {
         enable: true,
-        config: {}
+        config: {
+          onePxTransform: true,
+          unitPrecision: 5,
+          propList: ['*'],
+          selectorBlackList: [],
+          replace: true,
+          mediaQuery: false,
+          minPixelValue: 0
+        }
       },
       url: {
         enable: true,
@@ -57,16 +72,29 @@ const config = {
   },
   h5: {
     webpackChain(chain) {
-      chain.plugin('unplugin-vue-components').use(ComponentsPlugin({
-        resolvers: [NutUIResolver({taro: true})]
-      }))
+      chain.plugin('unplugin-vue-components').use(
+        ComponentsPlugin({
+          resolvers: [NutUIResolver({ taro: true })]
+        })
+      )
     },
     publicPath: '/',
     staticDirectory: 'static',
     postcss: {
       autoprefixer: {
         enable: true,
-        config: {}
+        config: {
+          onePxTransform: true,
+          unitPrecision: 5,
+          propList: ['*'],
+          selectorBlackList: [],
+          replace: true,
+          mediaQuery: false,
+          minPixelValue: 0,
+          baseFontSize: 20,
+          maxRootSize: 40,
+          minRootSize: 20
+        }
       },
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
@@ -79,7 +107,7 @@ const config = {
   }
 }
 
-module.exports = function(merge) {
+module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }

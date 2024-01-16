@@ -1,0 +1,90 @@
+.home {
+  background: #f9f9f9;
+  background-image: url('../../assets/img/background.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: auto;
+  &-panel {
+    margin: 16px 16px 0 16px;
+    padding: 16px;
+    border-radius: 16px;
+
+    &-head {
+      background: white;
+      border-radius: 16px;
+    }
+    &-image {
+      width: 85px;
+      height: 66px;
+    }
+  }
+  &-head {
+    padding-left: 20px;
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    &-logo {
+      height: 40px;
+      width: 164px;
+      margin-top: 54px;
+    }
+  }
+  &-content {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: #f9f9f9;
+    position: relative;
+    margin-top: 100px;
+  }
+  &-swiper {
+    padding: 16px;
+    padding-bottom: 0;
+    &-item {
+      background-image: url('../../assets/img/banner1.png');
+      width: 100%;
+      // height: 100%;
+      height: 130px;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      position: relative;
+      &-title {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        // font-family: 方正正粗黑简体;
+        font-size: 30px;
+        font-weight: bolder;
+        color: rgb(242, 179, 105);
+      }
+      &-text {
+        position: absolute;
+        left: 30px;
+        top: 70px;
+        color: rgb(242, 179, 105);
+      }
+    }
+  }
+  &-grid {
+    margin-top: 20px;
+    &-img {
+      width: 42px;
+      height: 42px;
+    }
+    &-name {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+  }
+
+  &-footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    &-logo {
+      height: 42px;
+      width: 184px
+    }
+  }
+
+}
