@@ -8,17 +8,46 @@
 .flex{
   display: flex;
 }
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
 .justify-center{
   justify-content: center;
+}
+.justify-between{
+  justify-content: space-between;
+}
+.justify-around{
+  justify-content: space-around;
 }
 .align-center{
   align-items: center;
 }
+.align-start{
+  align-items:flex-start;
+}
 .margin-top {
   margin-top: 16px;
 }
+.margin-top-sm{
+  margin-top: 8px;
+}
+.margin-top-xs{
+  margin-top: 4px;
+}
+.margin-tb{
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
 .margin-left{
   margin-left: 16px;
+}
+.margin-left-lg{
+  margin-left: 32px;
+}
+.margin-left-xl{
+  margin-left: 48px;
 }
 .margin-right{
   margin-right: 16px
@@ -26,11 +55,28 @@
 .margin-bottom{
   margin-bottom: 16px
 }
+.margin-bottom-sm{
+  margin-bottom: 8px;
+}
 .margin{
   margin: 16px
 }
+.margin-lr{
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.margin-auto{
+  margin: auto;
+}
 .padding{
   padding: 16px;
+}
+.padding-tb{
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.padding-sm{
+  padding: 8px;
 }
 .padding-left{
   padding-left: 16px;
@@ -43,6 +89,15 @@
 }
 .padding-bottom{
   padding-bottom: 16px
+}
+.padding-bottom-sm{
+  padding-bottom: 8px;
+}
+.radius{
+  border-radius: 10px;
+}
+.bg-white{
+  background-color: white;
 }
 .text-red {color: #e54d42} /* 嫣红 #e54d42 */
 .text-orange {color: #f37b1d}  /* 桔橙 #f37b1d */
@@ -59,3 +114,74 @@
 .text-gray {color: #aaaaaa} /* 草灰 #aaaaaa */
 .text-black {color: #333333} /* 墨黑 #333333 */
 .text-white {color: #ffffff} /* 雅白 #ffffff */
+.text-size{
+  font-size: 14px;
+}
+.text-sm{
+  font-size: 12px;
+}
+.text-lg{
+  font-size: 18px;
+}
+.text-xl{
+  font-size: 20px;
+}
+.text-xxl{
+  font-size: 26px;
+}
+.text-bold{
+  font-weight: 500;
+}
+.text-bolder{
+  font-weight: 700;
+}
+.text-slim{
+  font-weight: 300;
+}
+.text-center{
+  text-align: center;
+}
+.primary-button{
+  height: 40px;
+  line-height: 40px;
+  color: white;
+  font-size: 14px;
+  border-radius: 20px;
+  background-color: #F26C4E;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.primary-button-sm{
+  height: 30px;
+  line-height: 30px;
+  color: white;
+  font-size: 14px;
+  border-radius: 20px;
+  background-color: #F26C4E;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.radius{
+  border-radius: 16px;
+}
+.radius-sm{
+  border-radius: 8px;
+}
+.logo-bottom {
+  width: 184px;
+  height: 37px;  
+}
+.avatar-lg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-image: url('../img/img-weapp-avatar.png');
+  background-size: contain;
+}
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-image: url('../img/img-weapp-avatar.png');
+  background-size: contain;
+}

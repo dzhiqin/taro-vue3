@@ -1,6 +1,6 @@
 <template>
   <nut-grid-item class="my-grid-item" @click="handleClick">
-    <img :src="requireImage(props.imgSrc)" class="home-grid-img" />
+    <img :src="requireImage(props.imgName)" class="home-grid-img" />
     <view class="my-grid-title">{{ props.title }}</view>
   </nut-grid-item>
 </template>
@@ -9,11 +9,12 @@
 import { requireImage } from '@/tools/tools'
 
 let props = defineProps({
-  imgSrc: String,
-  title: String
+  imgName: String,
+  title: String,
+  path: String
 })
 const handleClick = () => {
-  console.log(props.title)
+  console.log(props.path)
 }
 </script>
 

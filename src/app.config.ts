@@ -1,5 +1,17 @@
 export default {
-  pages: ['pages/home/home', 'pages/create/index', 'pages/find/index', 'pages/my/index'],
+  pages: [
+    'pages/home/home',
+    'pages/mine/mine',
+    'pages/login/login',
+    'pages/citizen/citizen',
+    'pages/business/business',
+    'pages/loan-limit/loan-limit',
+    'pages/success/success',
+    'pages/user-info/user-info',
+    'pages/create/index',
+    'pages/find/index',
+    'pages/my/index'
+  ],
   window: {
     backgroundColor: '#fff',
     backgroundTextStyle: 'light',
@@ -28,21 +40,21 @@ export default {
     backgroundColor: '#fff',
     list: [
       {
-        pagePath: 'pages/create/index',
-        iconPath: 'assets/img/user_default.png',
-        selectedIconPath: 'assets/img/user_selected.png',
-        text: '创建'
+        pagePath: 'pages/home/home',
+        iconPath: 'assets/img/home@2x.png',
+        selectedIconPath: 'assets/img/home-en@2x.png',
+        text: '首页'
       },
+      // {
+      //   pagePath: 'pages/find/index',
+      //   iconPath: 'assets/img/user_default.png',
+      //   selectedIconPath: 'assets/img/user_selected.png',
+      //   text: '发现'
+      // },
       {
-        pagePath: 'pages/find/index',
-        iconPath: 'assets/img/user_default.png',
-        selectedIconPath: 'assets/img/user_selected.png',
-        text: '发现'
-      },
-      {
-        pagePath: 'pages/my/index',
-        iconPath: 'assets/img/user_default.png',
-        selectedIconPath: 'assets/img/user_selected.png',
+        pagePath: 'pages/mine/mine',
+        iconPath: 'assets/img/mine@2x.png',
+        selectedIconPath: 'assets/img/mine-en@2x.png',
         text: '我的'
       }
     ]

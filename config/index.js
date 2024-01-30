@@ -16,6 +16,8 @@ const config = {
     375: 2 / 1
   },
   alias: {
+    '@/tools': path.resolve(__dirname, '..', 'src/tools'),
+    '@/apis': path.resolve(__dirname, '..', 'src/services/apis'),
     '@': path.resolve(__dirname, '..', 'src')
   },
   sourceRoot: 'src',
@@ -35,6 +37,10 @@ const config = {
   },
   framework: 'vue3',
   mini: {
+    enableExtract: true,
+    miniCssExtractPluginOption: {
+      ignoreOrder: true
+    },
     webpackChain(chain) {
       chain.plugin('unplugin-vue-components').use(
         ComponentsPlugin({

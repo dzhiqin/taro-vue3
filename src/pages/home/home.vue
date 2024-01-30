@@ -1,7 +1,7 @@
 <template>
   <view class="home">
     <view class="home-head">
-      <img :src="requireImage('ssrcb-logo2.png')" class="home-head-logo" />
+      <img :src="requireImage('logo-ssrcb.png')" class="home-head-logo" />
     </view>
     <view class="home-content">
       <view class="home-swiper">
@@ -9,35 +9,43 @@
           :pagination-visible="true"
           pagination-color="#426543"
           pagination-unselected-color="#808080"
-          auto-play="3000"
+          auto-play="4000"
         >
           <nut-swiper-item>
-            <view class="home-swiper-item">
-              <view class="home-swiper-item-title">新市民积分贷</view>
-              <view class="home-swiper-item-text">最高额度300000</view>
-            </view>
+            <img
+              @click="navToPage('/pages/business/business')"
+              class="home-swiper-img"
+              src="https://ssrcb.fjnx.com.cn/jcgprodes/proxy/sys/common/staticPreview/weapp/temp3874149963416703706banner-business-loan_1706079263293.png"
+            />
           </nut-swiper-item>
           <nut-swiper-item>
-            <view class="home-swiper-item">
-              <view class="home-swiper-item-title">ETC申领</view>
-              <view class="home-swiper-item-text">ETC在线申领</view>
-            </view>
+            <img
+              class="home-swiper-img"
+              src="https://ssrcb.fjnx.com.cn/jcgprodes/proxy/sys/common/staticPreview/weapp/temp567811036168465928banner-new-citizen-loan_1706079324586.png"
+            />
           </nut-swiper-item>
         </nut-swiper>
       </view>
       <nut-grid class="home-grid" :column-num="3" :border="false" gutter="20">
+        <!-- <home-box-item imgName="etccar.png" title="ETC" /> -->
+        <!-- <home-box-item imgName="shop.png" title="商户" /> -->
+        <home-box-item
+          imgName="icon-business-loan.png"
+          title="创业担保贷"
+          path="/pages/business/business"
+        />
+        <home-box-item imgName="loan.png" title="新市民贷" />
+        <home-box-item imgName="icon-fill-info@2x.png" title="完善信息" />
+        <home-box-item imgName="icon-card@2x.png" title="普惠卡申领" />
+        <home-box-item imgName="huikuan.png" title="提前还款" />
+        <!-- <home-box-item imgName="zhengxin.png" title="征信查询" /> -->
         <home-box-item imgName="usercard.png" title="社保卡" />
-        <home-box-item imgName="etccar.png" title="ETC" />
-        <home-box-item imgName="shop.png" title="商户" />
-        <home-box-item imgName="zhengxin.png" title="征信查询" />
-        <home-box-item imgName="loan.png" title="贷款申请" />
-        <home-box-item imgName="bankcard.png" title="贷记卡申领" />
-        <home-box-item imgName="invoice.png" title="发票打印" />
-        <home-box-item imgName="estimate.png" title="风险评估" />
-        <home-box-item imgName="huikuan.png" title="汇款" />
+        <!-- <home-box-item imgName="bankcard.png" title="贷记卡申领" /> -->
+        <!-- <home-box-item imgName="invoice.png" title="发票打印" /> -->
+        <!-- <home-box-item imgName="estimate.png" title="风险评估" /> -->
       </nut-grid>
 
-      <view class="home-panel" style="background: rgba(243, 84, 33, 0.15)">
+      <view v-show="false" class="home-panel" style="background: rgba(243, 84, 33, 0.15)">
         <view class="home-panel-head flex align-center">
           <img :src="requireImage('card.png')" class="home-panel-image" />
           <view>
@@ -46,18 +54,18 @@
           </view>
         </view>
         <nut-grid :border="false" class="margin-top">
-          <home-grid-item imgSrc="Group-user2.png" title="金融服务"></home-grid-item>
-          <home-grid-item imgSrc="Group-list.png" title="交易明细"></home-grid-item>
-          <home-grid-item imgSrc="Group-card-add.png" title="贷记卡申领"></home-grid-item>
-          <home-grid-item imgSrc="Group-message2.png" title="金额设置"></home-grid-item>
-          <home-grid-item imgSrc="Group-card-min.png" title="信用卡"></home-grid-item>
-          <home-grid-item imgSrc="Group-card-add.png" title="信用卡申请"></home-grid-item>
-          <home-grid-item imgSrc="Group-shop.png" title="信用卡生活"></home-grid-item>
-          <home-grid-item imgSrc="Group-card-user.png" title="社保卡"></home-grid-item>
+          <home-grid-item imgName="Group-user2.png" title="金融服务"></home-grid-item>
+          <home-grid-item imgName="Group-list.png" title="交易明细"></home-grid-item>
+          <home-grid-item imgName="Group-card-add.png" title="贷记卡申领"></home-grid-item>
+          <home-grid-item imgName="Group-message2.png" title="金额设置"></home-grid-item>
+          <home-grid-item imgName="Group-card-min.png" title="信用卡"></home-grid-item>
+          <home-grid-item imgName="Group-card-add.png" title="信用卡申请"></home-grid-item>
+          <home-grid-item imgName="Group-shop.png" title="信用卡生活"></home-grid-item>
+          <home-grid-item imgName="Group-card-user.png" title="社保卡"></home-grid-item>
         </nut-grid>
       </view>
 
-      <view class="home-panel" style="background: rgba(144, 200, 252, 0.15)">
+      <view v-show="false" class="home-panel" style="background: rgba(144, 200, 252, 0.15)">
         <view class="home-panel-head flex align-center">
           <img :src="requireImage('chart.png')" class="home-panel-image" />
           <view>
@@ -66,16 +74,16 @@
           </view>
         </view>
         <nut-grid :border="false" class="margin-top">
-          <home-grid-item imgSrc="Group-exchange.png" title="行内转账"></home-grid-item>
-          <home-grid-item imgSrc="Group-card-flash.png" title="快捷转账"></home-grid-item>
-          <home-grid-item imgSrc="Group-bank.png" title="跨行转账"></home-grid-item>
-          <home-grid-item imgSrc="Group-heart.png" title="爱心捐赠"></home-grid-item>
-          <home-grid-item imgSrc="Group-loan2.png" title="个人贷款"></home-grid-item>
-          <home-grid-item imgSrc="Group-loan.png" title="企业贷款"></home-grid-item>
+          <home-grid-item imgName="Group-exchange.png" title="行内转账"></home-grid-item>
+          <home-grid-item imgName="Group-card-flash.png" title="快捷转账"></home-grid-item>
+          <home-grid-item imgName="Group-bank.png" title="跨行转账"></home-grid-item>
+          <home-grid-item imgName="Group-heart.png" title="爱心捐赠"></home-grid-item>
+          <home-grid-item imgName="Group-loan2.png" title="个人贷款"></home-grid-item>
+          <home-grid-item imgName="Group-loan.png" title="企业贷款"></home-grid-item>
         </nut-grid>
       </view>
 
-      <view class="home-panel" style="background: rgba(149, 198, 117, 0.15)">
+      <view v-show="false" class="home-panel" style="background: rgba(149, 198, 117, 0.15)">
         <view class="home-panel-head flex align-center">
           <img :src="requireImage('camera.png')" class="home-panel-image" />
           <view>
@@ -84,19 +92,31 @@
           </view>
         </view>
         <nut-grid :border="false" class="margin-top">
-          <home-grid-item imgSrc="Group-phone.png" title="手机充值"></home-grid-item>
-          <home-grid-item imgSrc="Group-flash.png" title="电费账单"></home-grid-item>
-          <home-grid-item imgSrc="Group-water-bill.png" title="水费账单"></home-grid-item>
-          <home-grid-item imgSrc="Group-car.png" title="高速ETC"></home-grid-item>
-          <home-grid-item imgSrc="Group-invoice.png" title="增值税开票"></home-grid-item>
-          <home-grid-item imgSrc="Group-user.png" title="征信查询"></home-grid-item>
-          <home-grid-item imgSrc="Group-message.png" title="投诉建议"></home-grid-item>
-          <home-grid-item imgSrc="Group-location.png" title="网点导航"></home-grid-item>
+          <home-grid-item imgName="Group-phone.png" title="手机充值"></home-grid-item>
+          <home-grid-item imgName="Group-flash.png" title="电费账单"></home-grid-item>
+          <home-grid-item imgName="Group-water-bill.png" title="水费账单"></home-grid-item>
+          <home-grid-item imgName="Group-car.png" title="高速ETC"></home-grid-item>
+          <home-grid-item imgName="Group-invoice.png" title="增值税开票"></home-grid-item>
+          <home-grid-item imgName="Group-user.png" title="征信查询"></home-grid-item>
+          <home-grid-item imgName="Group-message.png" title="投诉建议"></home-grid-item>
+          <home-grid-item imgName="Group-location.png" title="网点导航"></home-grid-item>
         </nut-grid>
+      </view>
+
+      <view class="home-manager margin">
+        <my-title><view class="text-bolder">专属服务</view></my-title>
+        <view class="home-manager-content padding flex align-center margin-top-xs radius-sm">
+          <nut-avatar size="large"></nut-avatar>
+          <view class="margin-left">
+            <view class="text-size-lg text-bold">陈先生</view>
+            <view class="text-slim">港塘支行 - 金融专员</view>
+            <view class="text-slim text-sm">泉州市石狮市北环路3363号</view>
+          </view>
+        </view>
       </view>
     </view>
     <view class="home-footer">
-      <img :src="requireImage('ssrcb-logo.png')" class="home-footer-logo" />
+      <img :src="requireImage('logo-ssrcb2.png')" class="home-footer-logo" />
     </view>
     <view class="margin"></view>
   </view>
@@ -105,6 +125,10 @@
 import { requireImage } from '@/tools/tools'
 import HomeGridItem from './components/gridItem'
 import HomeBoxItem from './components/boxItem'
+import Taro from '@tarojs/taro'
+const navToPage = value => {
+  Taro.navigateTo({ url: value })
+}
 </script>
 <style lang="scss">
 @import './home.scss';

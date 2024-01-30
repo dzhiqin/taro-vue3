@@ -44,7 +44,7 @@ class HttpRequest {
   interceptors(instance: AxiosInstance) {
     instance.interceptors.request.use(
       config => {
-        console.log('config :>> ', config)
+        // console.log('config :>> ', config)
         let isPublic = false
         publicConfig.publicPath.map(path => {
           isPublic = isPublic || path.test(config.url || '')
@@ -92,22 +92,32 @@ class HttpRequest {
     return instance(newOptions)
   }
 
-  get(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse> | Promise<HttpResponse> {
+  get(
+    url: string,
+    params?: unknown,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse> | Promise<HttpResponse> {
     const options = Object.assign(
       {
         method: 'get',
-        url: url
+        url: url,
+        params
       },
       config
     )
     return this.request(options)
   }
 
-  post(url: string, data?: unknown): Promise<AxiosResponse> | Promise<HttpResponse> {
+  post(
+    url: string,
+    params?: unknown,
+    data?: unknown
+  ): Promise<AxiosResponse> | Promise<HttpResponse> {
     return this.request({
       method: 'post',
       url: url,
-      data: data
+      data: data,
+      params
     })
   }
 }
