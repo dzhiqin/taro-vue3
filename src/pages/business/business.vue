@@ -84,11 +84,11 @@
                 @blur="blurValidator('phone')"
               >
                 <template #right>
-                  <my-sms-btn :phone="state.phone" />
+                  <my-sms-btn :phone="state.phone" type="business" />
                 </template>
               </nut-input>
             </nut-form-item>
-            <nut-form-item v-model="state.address" label="验证码" prop="sms">
+            <nut-form-item label="验证码" prop="sms">
               <nut-input
                 class="nut-input-text"
                 placeholder="请输入验证码"
@@ -134,7 +134,7 @@
             </nut-form-item>
           </nut-form>
           <view class="margin-tb busi-content-btn">
-            <nut-button block color="#2A82E4" @tap="onSubmit">提交</nut-button>
+            <nut-button block color="#2A82E4" @click="onSubmit">提交</nut-button>
           </view>
         </view>
       </nut-swiper-item>
@@ -150,7 +150,7 @@
 </template>
 <script setup>
 import { MyLogo, MySmsBtn } from '@/components/index'
-import { formatImgUrl, baseTaroToast, taroRedirectToPage } from '@/tools/tools'
+import { formatImgUrl, taroToast, taroRedirectToPage } from '@/tools/tools'
 import { ref, reactive, computed } from 'vue'
 import { Left, Right } from '@nutui/icons-vue-taro'
 import { Picker } from '@tarojs/components'
@@ -162,7 +162,7 @@ import {
   checkBusinessLoanSms,
   submitBusinessLoanForm
 } from '@/apis/business.api'
-const state = reactive({
+let state = reactive({
   name: '',
   phone: '',
   sms: '',
@@ -206,7 +206,7 @@ const onSubmit = () => {
   ruleForm.value.validate().then(async ({ valid }) => {
     if (valid) {
       const { result, message } = await checkSms()
-      if (!result) return baseTaroToast(message)
+      if (!result) return taroToast(message)
       handleSubmit()
     }
   })
@@ -225,7 +225,7 @@ const handleSubmit = () => {
     if (res.code === 200) {
       taroRedirectToPage('/pages/success/success')
     } else {
-      baseTaroToast(res.message)
+      taroToast(res.message)
     }
   })
 }
@@ -254,7 +254,7 @@ getBusinessRadioOptions({ dicCode: 'defaultFlag' }).then(res => {
   if (res.code === 200) {
     radioOptions.value = res.result
   } else {
-    baseTaroToast('获取选项失败')
+    taroToast('获取选项失败')
   }
 })
 const orgRange = computed(() => {

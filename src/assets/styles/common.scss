@@ -1,6 +1,20 @@
 
 
 // 解决iPhone x 以后的机型 底部安全区域的问题 https://jelly.jd.com/article/6006b1055b6c6a01506c87fd
+@font-face {
+  font-family: 方正粗倩体;
+  src: url('../../assets/font/方正粗倩体.TTF');
+}
+@font-face {
+  font-family: 方正尚酷简体;
+  src: url('../../assets/font/方正尚酷简体.TTF');
+}
+.font-fzcq{
+  font-family: 方正粗倩体;
+}
+.font-fzsk{
+  font-family: 方正尚酷简体;
+}
 .safe-area-bottom {
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
@@ -30,6 +44,9 @@
 .margin-top {
   margin-top: 16px;
 }
+.margin-top-lg{
+  margin-top: 32px;
+}
 .margin-top-sm{
   margin-top: 8px;
 }
@@ -40,8 +57,14 @@
   margin-top: 16px;
   margin-bottom: 16px;
 }
+.margin-lg{
+  margin: 32px;
+}
 .margin-left{
   margin-left: 16px;
+}
+.margin-left-xs{
+  margin-left: 8px;
 }
 .margin-left-lg{
   margin-left: 32px;

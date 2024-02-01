@@ -13,10 +13,13 @@
 </template>
 <script setup>
 import { ArrowRight } from '@nutui/icons-vue-taro'
-import Taro from '@tarojs/taro'
-import { taroNavigateToPage } from '@/tools/tools'
+import { taroNavigateToPage, getUserInfoStorageSync } from '@/tools/tools'
 import { ref } from 'vue'
-const userInfo = ref(Taro.getStorageSync('USER_INFO'))
+import { useDidShow } from '@tarojs/taro'
+useDidShow(() => {
+  userInfo.value = getUserInfoStorageSync()
+})
+const userInfo = ref('')
 const navToPage = () => {
   taroNavigateToPage('/pages/user-info/user-info')
 }

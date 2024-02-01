@@ -7,9 +7,18 @@
     <user-profile />
     <view class="bg-white radius margin padding-sm">
       <nut-grid :border="false">
-        <MyGridItem imgName="card-icon@2x.png" title="我的额度" />
-        <MyGridItem imgName="record-icon@2x.png" title="申请记录" />
-        <MyGridItem imgName="service-icon@2x.png" title="客服中心" />
+        <MyGridItem imgName="icon-pie-chart.png" title="我的额度" />
+        <MyGridItem imgName="icon-record-list.png" title="申请记录" />
+        <MyGridItem
+          imgName="icon-telephone.png"
+          title="客服中心"
+          path="/pages/packs/service/service"
+        />
+        <MyGridItem
+          imgName="icon-fill-in.png"
+          title="信息完善"
+          path="/pages/identity-info/identity-info"
+        />
       </nut-grid>
     </view>
     <view class="mine-footer">

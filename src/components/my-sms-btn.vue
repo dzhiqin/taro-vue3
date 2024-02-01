@@ -13,13 +13,19 @@
 import { ref } from 'vue'
 import { Countdown as NutCountdown } from '@nutui/nutui-taro'
 import { phoneNumberRegex } from '@/tools/static'
-import { baseTaroToast } from '@/tools/tools'
+import { taroToast } from '@/tools/tools'
 import { getBusinessLoanSms } from '@/apis/business.api'
+import { getUpdatePersonalSms } from '@/services/apis/common.api'
 const busy = ref(false)
 const props = defineProps({
   phone: {
     type: String,
     required: true
+  },
+  type: {
+    type: String,
+    required: true,
+    default: 'business'
   }
 })
 // const temp = watch(
@@ -35,17 +41,27 @@ const handleStart = () => {
     busy.value = true
     getSms()
   } else {
-    baseTaroToast('手机号码格式错误')
+    taroToast('手机号码格式错误')
   }
 }
 const getSms = () => {
-  getBusinessLoanSms({ phone: props.phone }).then(res => {
-    if (res.code === 200) {
-      baseTaroToast('验证码已发送')
-    } else {
-      baseTaroToast('验证码发送失败')
-    }
-  })
+  if (props.type === 'business') {
+    getBusinessLoanSms({ phone: props.phone }).then(res => {
+      if (res.code === 200) {
+        taroToast('验证码已发送')
+      } else {
+        taroToast('验证码发送失败')
+      }
+    })
+  } else if (props.type === 'personal') {
+    getUpdatePersonalSms({ phone: props.phone }).then(res => {
+      if (res.code === 200) {
+        taroToast('验证码已发送')
+      } else {
+        taroToast('验证码发送失败')
+      }
+    })
+  }
 }
 const onEnd = () => {
   countdown.value.reset()

@@ -1,7 +1,7 @@
 <template>
   <view class="home">
     <view class="home-head">
-      <img :src="requireImage('logo-ssrcb.png')" class="home-head-logo" />
+      <my-logo style="margin-top: 55px" />
     </view>
     <view class="home-content">
       <view class="home-swiper">
@@ -35,11 +35,15 @@
           path="/pages/business/business"
         />
         <home-box-item imgName="loan.png" title="新市民贷" />
-        <home-box-item imgName="icon-fill-info@2x.png" title="完善信息" />
+        <home-box-item
+          imgName="icon-fill-info@2x.png"
+          title="信息完善"
+          path="/pages/identity-info/identity-info"
+        />
         <home-box-item imgName="icon-card@2x.png" title="普惠卡申领" />
         <home-box-item imgName="huikuan.png" title="提前还款" />
-        <!-- <home-box-item imgName="zhengxin.png" title="征信查询" /> -->
         <home-box-item imgName="usercard.png" title="社保卡" />
+        <!-- <home-box-item imgName="zhengxin.png" title="征信查询" /> -->
         <!-- <home-box-item imgName="bankcard.png" title="贷记卡申领" /> -->
         <!-- <home-box-item imgName="invoice.png" title="发票打印" /> -->
         <!-- <home-box-item imgName="estimate.png" title="风险评估" /> -->

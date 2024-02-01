@@ -8,6 +8,7 @@ export default {
     'pages/loan-limit/loan-limit',
     'pages/success/success',
     'pages/user-info/user-info',
+    'pages/identity-info/identity-info',
     'pages/create/index',
     'pages/find/index',
     'pages/my/index'
@@ -21,16 +22,8 @@ export default {
   },
   subpackages: [
     {
-      root: 'pagesSub/search',
-      pages: ['index']
-    },
-    {
-      root: 'pagesSub/my',
-      pages: ['detail/index', 'about/index']
-    },
-    {
-      root: 'pagesSub/book',
-      pages: ['detail/index']
+      root: 'pages/packs',
+      pages: ['service/service']
     }
   ],
   tabBar: {
@@ -45,12 +38,6 @@ export default {
         selectedIconPath: 'assets/img/home-en@2x.png',
         text: '首页'
       },
-      // {
-      //   pagePath: 'pages/find/index',
-      //   iconPath: 'assets/img/user_default.png',
-      //   selectedIconPath: 'assets/img/user_selected.png',
-      //   text: '发现'
-      // },
       {
         pagePath: 'pages/mine/mine',
         iconPath: 'assets/img/mine@2x.png',

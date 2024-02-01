@@ -4,11 +4,13 @@
     <view class="citizen-banner">
       <view class="flex align-center">
         <my-tag><view class="text-slim">信用贷</view></my-tag>
-        <view class="citizen-title">新市民贷款</view>
+        <view class="citizen-title font-fzsk">新市民贷款</view>
       </view>
-      <view class="text-xl margin-left-lg margin-top text-white text-bolder">最高可借额度</view>
+      <view class="citizen-banner-title font-fzsk"> 最高可借额度 </view>
       <view class="flex justify-between">
-        <view class="text-xxl margin-top margin-left-lg text-white text-bolder">300000元</view>
+        <view class="text-xxl margin-top margin-left-lg text-white text-bolder font-fzsk"
+          >300000元</view
+        >
         <view class="flex-column align-center citizen-banner-abs">
           <view class="citizen-banner-btn" @click="navToPage">测算额度</view>
           <view class="text-slim text-white text-sm">(以实际审批为准)</view>
@@ -142,10 +144,9 @@ const navToPage = () => {
     position: relative;
     &-title {
       font-size: 24px;
-      font-weight: 700;
       margin-left: 20px;
+      margin-top: 20px;
       color: white;
-      // margin-top: 20px;
     }
     &-btn {
       background-color: #f22424;

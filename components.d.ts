@@ -18,6 +18,7 @@ declare module 'vue' {
     MyTitle: typeof import('./src/components/my-title.vue')['default']
     NutAvatar: typeof import('@nutui/nutui-taro')['Avatar']
     NutButton: typeof import('@nutui/nutui-taro')['Button']
+    NutCascader: typeof import('@nutui/nutui-taro')['Cascader']
     NutForm: typeof import('@nutui/nutui-taro')['Form']
     NutFormItem: typeof import('@nutui/nutui-taro')['FormItem']
     NutGrid: typeof import('@nutui/nutui-taro')['Grid']

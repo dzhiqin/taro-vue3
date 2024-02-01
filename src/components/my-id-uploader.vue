@@ -35,7 +35,7 @@
 </template>
 <script setup>
 import Config from '@/config/index'
-import { formatImgUrl } from '@/tools/tools'
+import { formatImgUrl, taroShowLoading, taroHideLoading } from '@/tools/tools'
 import { Uploader as NutUploader, ImagePreview as NutImagePreview } from '@nutui/nutui-taro'
 import { ref } from 'vue'
 import { CircleClose } from '@nutui/icons-vue-taro'
@@ -53,17 +53,18 @@ const isError = ref(false)
 const errMsg = ref('')
 const uploadSuccess = e => {
   const { data } = e.data
-  console.log('success', JSON.parse(data))
   const result = JSON.parse(data)
   imgTemp.value = result.message
   previewList.value = [{ src: formatImgUrl(imgTemp.value) }]
   handleOcr()
 }
 const handleOcr = () => {
+  taroShowLoading()
   idCardOcr({
     type: isBack.value ? '2' : '1',
     filename: imgTemp.value
   }).then(res => {
+    taroHideLoading()
     console.log('ocr = ', res)
     if (res.code === 400) {
       isError.value = true
@@ -72,7 +73,11 @@ const handleOcr = () => {
     }
     if (res.code === 200) {
       // props.ocrResult(res.data)
-      emits('ocrResult', { result: true, message: 'success', data: res.data })
+      emits('ocrResult', {
+        result: true,
+        message: 'success',
+        data: { ...res.data, temp: imgTemp.value }
+      })
     }
   })
 }

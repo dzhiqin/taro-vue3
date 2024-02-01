@@ -13,7 +13,7 @@
         </button>
       </view>
       <view class="margin-lr">
-        <view>昵称</view>
+        <view>修改昵称</view>
         <view class="user-cell">
           <input
             :value="nickName"
@@ -34,7 +34,7 @@
 import { MyNavigator } from '@/components/index'
 import { ref } from 'vue'
 import Taro from '@tarojs/taro'
-import { setNickNameStorage, setAvatarUrlStorage, successTaroToast } from '@/tools/tools'
+import { setNickNameStorage, setAvatarUrlStorage, taroSuccessToast } from '@/tools/tools'
 
 const userInfo = Taro.getStorageSync('USER_INFO')
 const avatarUrl = ref(userInfo.avatarUrl ? userInfo.avatarUrl : '')
@@ -50,7 +50,7 @@ const changeNickName = e => {
   setNickNameStorage(name)
 }
 const handleSave = () => {
-  successTaroToast('保存成功')
+  taroSuccessToast('保存成功')
 }
 </script>
 <style lang="scss">
