@@ -1,4 +1,5 @@
 import Taro from '@tarojs/taro'
+import { getCurrentInstance } from 'vue'
 
 export const requireImage = imgName => {
   const png = require(`../assets/img/${imgName}`)
@@ -36,7 +37,7 @@ export const taroHideLoading = () => {
 export const taroNavigateToPage = (path: string) => {
   Taro.navigateTo({ url: path })
 }
-export const taroRedirectToPage = (path: string) => {
+export const taroRedirectToPage = (path: string, params?: any) => {
   Taro.redirectTo({ url: path })
 }
 export const getUserInfoStorageSync = () => {
@@ -49,4 +50,7 @@ export const setAvatarUrlStorage = url => {
 export const setNickNameStorage = name => {
   const userInfo = Taro.getStorageSync('USER_INFO')
   Taro.setStorage({ key: 'USER_INFO', data: { ...userInfo, nickName: name } })
+}
+export const taroGetParams = () => {
+  return Taro.getCurrentInstance()?.router.params
 }

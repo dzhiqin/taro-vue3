@@ -15,7 +15,7 @@ import { Countdown as NutCountdown } from '@nutui/nutui-taro'
 import { phoneNumberRegex } from '@/tools/static'
 import { taroToast } from '@/tools/tools'
 import { getBusinessLoanSms } from '@/apis/business.api'
-import { getUpdatePersonalSms } from '@/services/apis/common.api'
+import { getUpdatePersonalSms, getEasySms } from '@/services/apis/common.api'
 const busy = ref(false)
 const props = defineProps({
   phone: {
@@ -45,22 +45,22 @@ const handleStart = () => {
   }
 }
 const getSms = () => {
-  if (props.type === 'business') {
-    getBusinessLoanSms({ phone: props.phone }).then(res => {
-      if (res.code === 200) {
-        taroToast('验证码已发送')
-      } else {
-        taroToast('验证码发送失败')
-      }
-    })
-  } else if (props.type === 'personal') {
-    getUpdatePersonalSms({ phone: props.phone }).then(res => {
-      if (res.code === 200) {
-        taroToast('验证码已发送')
-      } else {
-        taroToast('验证码发送失败')
-      }
-    })
+  sendSmsByScene().then(res => {
+    if (res.code === 200) {
+      taroToast('验证码已发送')
+    } else {
+      taroToast('验证码发送失败')
+    }
+  })
+}
+const sendSmsByScene = () => {
+  switch (props.type) {
+    case 'business':
+      return getBusinessLoanSms({ phone: props.phone })
+    case 'personal':
+      return getUpdatePersonalSms({ phone: props.phone })
+    case 'easy':
+      return getEasySms({ phone: props.phone })
   }
 }
 const onEnd = () => {

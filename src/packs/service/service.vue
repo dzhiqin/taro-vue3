@@ -20,7 +20,7 @@ import { formatImgUrl } from '@/tools/tools'
 <style lang="scss">
 .service {
   background: #f5f5f5;
-  background-image: url('../../../assets/img/background.png');
+  background-image: url('../../assets/img/background.png');
   background-repeat: no-repeat;
   background-size: 100%;
   height: 100vh;

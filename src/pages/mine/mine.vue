@@ -9,11 +9,7 @@
       <nut-grid :border="false">
         <MyGridItem imgName="icon-pie-chart.png" title="我的额度" />
         <MyGridItem imgName="icon-record-list.png" title="申请记录" />
-        <MyGridItem
-          imgName="icon-telephone.png"
-          title="客服中心"
-          path="/pages/packs/service/service"
-        />
+        <MyGridItem imgName="icon-telephone.png" title="客服中心" path="/packs/service/service" />
         <MyGridItem
           imgName="icon-fill-in.png"
           title="信息完善"

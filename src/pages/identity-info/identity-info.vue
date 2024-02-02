@@ -92,7 +92,9 @@
       <my-title class="margin-top margin-left"><view class="text-bolder">个人信息</view></my-title>
       <nut-form-item v-model="state.residence" label="现居住地" prop="residence">
         <picker mode="region" @change="onRegionChange" :value="state.residence">
-          <view class="text-black"> {{ selectedRegion.join('') }} </view>
+          <my-select-cell>
+            <view class="text-black"> {{ state.residence.join('') }} </view>
+          </my-select-cell>
         </picker>
       </nut-form-item>
       <nut-form-item label="详细地址" prop="residenceDetail">
@@ -106,8 +108,11 @@
       </nut-form-item>
       <nut-form-item v-model="state.occupation" label="选择职业" prop="occupation">
         <view class="text-black" @click="modalVisible = true">
-          {{ state.occupation.length ? state.occupation.join('-') : '请选择职业' }}
+          <my-select-cell>
+            {{ state.occupation.length ? state.occupation.join('-') : '请选择职业' }}
+          </my-select-cell>
         </view>
+
         <nut-cascader
           title="选择职业"
           v-model:visible="modalVisible"
@@ -154,7 +159,7 @@
   </view>
 </template>
 <script setup>
-import { MyTitle, MyIdUploader } from '@/components/index'
+import { MyTitle, MyIdUploader, MySelectCell } from '@/components/index'
 import { reactive, ref } from 'vue'
 import { phoneValidator } from '@/tools/validator'
 import { provCityDistRegex } from '@/tools/static'
@@ -162,7 +167,6 @@ import Taro from '@tarojs/taro'
 import { taroToast, taroFailureToast, taroShowLoading, taroHideLoading } from '@/tools/tools'
 import { occupations } from '@/libs/occupation'
 import { updatePersonalIdInfo } from '@/apis/common.api'
-
 const idenForm = ref(null)
 let state = reactive({
   name: '',
@@ -200,7 +204,6 @@ const idenFormRules = {
   ],
   sms: [{ required: true, message: '请填写验证码' }]
 }
-const selectedRegion = ref(['福建省', '泉州市', '石狮市'])
 const onOcrFrontResult = e => {
   const { result, message, data } = e
   if (result) {
@@ -220,7 +223,7 @@ const onOcrBackResult = e => {
   }
 }
 const onRegionChange = e => {
-  state.region = e.detail.value
+  state.residence = e.detail.value
 }
 const blurValidator = prop => {
   idenForm.value.validate(prop)

@@ -4,6 +4,7 @@ export default {
     'pages/mine/mine',
     'pages/login/login',
     'pages/citizen/citizen',
+    'pages/loan-apply/loan-apply',
     'pages/business/business',
     'pages/loan-limit/loan-limit',
     'pages/success/success',
@@ -22,7 +23,7 @@ export default {
   },
   subpackages: [
     {
-      root: 'pages/packs',
+      root: 'packs',
       pages: ['service/service']
     }
   ],

@@ -44,7 +44,7 @@
               >日费率低至<text class="text-red">0.02%</text></view
             >
           </view>
-          <view class="primary-button-sm">点击办理</view>
+          <view class="primary-button-sm" @click="navToProduct('普惠信用贷')">点击办理</view>
         </view>
         <view class="flex align-center margin-top-sm">
           <my-tag color="red"><view class="text-white text-sm">授信期限3年</view></my-tag>
@@ -65,7 +65,7 @@
               >日费率低至<text class="text-red">0.02%</text></view
             >
           </view>
-          <view class="primary-button-sm">点击办理</view>
+          <view class="primary-button-sm" @click="navToProduct('普惠金融卡')">点击办理</view>
         </view>
         <view class="flex align-center margin-top-sm">
           <my-tag color="red"><view class="text-white text-sm">授信期限3年</view></my-tag>
@@ -86,7 +86,7 @@
               >日费率低至<text class="text-red">0.02%</text></view
             >
           </view>
-          <view class="primary-button-sm">点击办理</view>
+          <view class="primary-button-sm" @click="navToProduct('房产抵押贷')">点击办理</view>
         </view>
         <view class="flex align-center margin-top-sm">
           <my-tag color="red"><view class="text-white text-sm">授信期限3年</view></my-tag>
@@ -103,10 +103,13 @@
 <script setup>
 import MyTag from '@/components/my-tag'
 import ApplyOption from './components/apply-option.vue'
-import { requireImage } from '@/tools/tools'
+import { requireImage, taroNavigateToPage } from '@/tools/tools'
 import Taro from '@tarojs/taro'
 const navToPage = () => {
   Taro.navigateTo({ url: '/pages/loan-limit/loan-limit' })
+}
+const navToProduct = prodName => {
+  taroNavigateToPage(`/pages/loan-apply/loan-apply?prodName=${prodName}`)
 }
 </script>
 <style lang="scss">
