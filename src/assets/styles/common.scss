@@ -1,6 +1,15 @@
 
+page {
+  --nut-input-font-size: 16px;
+  --nut-form-item-label-font-size: 16px;
+  --nut-radio-label-font-size: 16px;
+  --nut-font-size-0: 12px;
+  --nut-font-size-1: 14px;
+  --nut-font-size-2: 16px;
+  --nut-font-size-3: 18px;
+  --nut-font-size-4: 20px;
+}
 
-// 解决iPhone x 以后的机型 底部安全区域的问题 https://jelly.jd.com/article/6006b1055b6c6a01506c87fd
 @font-face {
   font-family: 方正粗倩体;
   src: url('../../assets/font/方正粗倩体.TTF');
@@ -215,3 +224,5 @@
 .box-shadow{
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+
+// 解决iPhone x 以后的机型 底部安全区域的问题 https://jelly.jd.com/article/6006b1055b6c6a01506c87fd

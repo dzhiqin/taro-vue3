@@ -58,7 +58,7 @@
           placeholder="上传身份证后自动识别"
         />
       </nut-form-item>
-      <nut-form-item label="证件签发机关" prop="authority" :label-width="100">
+      <nut-form-item label="签发机关" prop="authority" :label-width="100">
         <nut-input
           v-model="state.authority"
           type="text"
@@ -150,7 +150,12 @@
         />
       </nut-form-item>
       <nut-form-item label="固定电话" prop="linePhone">
-        <nut-input class="nut-input-text" type="number" v-model="state.linePhone" />
+        <nut-input
+          class="nut-input-text"
+          type="number"
+          v-model="state.linePhone"
+          placeholder="选填"
+        />
       </nut-form-item>
       <view class="margin-lg">
         <nut-button type="primary" block @click="onSubmit">保存</nut-button>

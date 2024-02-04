@@ -90,7 +90,7 @@
             <nut-radio label="0">否</nut-radio>
           </nut-radio-group>
         </nut-form-item>
-        <nut-form-item label="客户经理工号" prop="managerId">
+        <nut-form-item label="客户经理工号" prop="managerId" :label-width="100">
           <nut-input
             v-model="state.managerId"
             class="nut-input-text"
@@ -98,7 +98,7 @@
             type="text"
           />
         </nut-form-item>
-        <nut-form-item label="推荐人工号" prop="recommendId">
+        <nut-form-item label="推荐人工号" prop="recommendId" :label-width="100">
           <nut-input
             v-model="state.recommendId"
             class="nut-input-text"
