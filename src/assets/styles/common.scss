@@ -98,6 +98,10 @@
   padding-top: 16px;
   padding-bottom: 16px;
 }
+.padding-tb-lg{
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
 .padding-sm{
   padding: 8px;
 }
@@ -207,4 +211,7 @@
   border-radius: 50%;
   background-image: url('../img/img-weapp-avatar.png');
   background-size: contain;
+}
+.box-shadow{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }

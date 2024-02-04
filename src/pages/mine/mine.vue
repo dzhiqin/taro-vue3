@@ -7,8 +7,8 @@
     <user-profile />
     <view class="bg-white radius margin padding-sm">
       <nut-grid :border="false">
-        <MyGridItem imgName="icon-pie-chart.png" title="我的额度" />
-        <MyGridItem imgName="icon-record-list.png" title="申请记录" />
+        <!-- <MyGridItem imgName="icon-pie-chart.png" title="我的额度" /> -->
+        <!-- <MyGridItem imgName="icon-record-list.png" title="申请记录" /> -->
         <MyGridItem imgName="icon-telephone.png" title="客服中心" path="/packs/service/service" />
         <MyGridItem
           imgName="icon-fill-in.png"
@@ -26,7 +26,6 @@
 import { requireImage } from '@/tools/tools'
 import MyGridItem from './components/gridItem.vue'
 import UserProfile from './components/user-profile.vue'
-// import Taro from '@tarojs/taro'
 </script>
 <style lang="scss">
 .mine {
@@ -57,7 +56,7 @@ import UserProfile from './components/user-profile.vue'
     left: calc(187px - 92px);
     bottom: 30px;
     &-logo {
-      height: 42px;
+      height: 37px;
       width: 184px;
     }
   }

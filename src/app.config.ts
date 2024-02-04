@@ -10,6 +10,7 @@ export default {
     'pages/success/success',
     'pages/user-info/user-info',
     'pages/identity-info/identity-info',
+    'pages/prepayment/prepayment',
     'pages/create/index',
     'pages/find/index',
     'pages/my/index'
@@ -24,7 +25,7 @@ export default {
   subpackages: [
     {
       root: 'packs',
-      pages: ['service/service']
+      pages: ['service/service', 'feedback/feedback']
     }
   ],
   tabBar: {

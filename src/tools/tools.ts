@@ -37,6 +37,9 @@ export const taroHideLoading = () => {
 export const taroNavigateToPage = (path: string) => {
   Taro.navigateTo({ url: path })
 }
+export const taroNavigateBack = () => {
+  Taro.navigateBack()
+}
 export const taroRedirectToPage = (path: string, params?: any) => {
   Taro.redirectTo({ url: path })
 }
@@ -53,4 +56,26 @@ export const setNickNameStorage = name => {
 }
 export const taroGetParams = () => {
   return Taro.getCurrentInstance()?.router.params
+}
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+export const humanDate = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+
+  return [year, month, day].map(formatNumber).join('-')
+}
+export const humanDateAndTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hours = date.getHours()
+  const minutes = date.getMinutes()
+  const seconds = date.getSeconds()
+  const dateStr = [year, month, day].map(formatNumber).join('-')
+  const timeStr = [hours, minutes, seconds].map(formatNumber).join(':')
+  return dateStr + ' ' + timeStr
 }
