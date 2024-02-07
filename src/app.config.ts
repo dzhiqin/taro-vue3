@@ -9,7 +9,6 @@ export default {
     'pages/loan-limit/loan-limit',
     'pages/success/success',
     'pages/user-info/user-info',
-    'pages/identity-info/identity-info',
     'pages/prepayment/prepayment',
     'pages/create/index',
     'pages/find/index',
@@ -25,7 +24,13 @@ export default {
   subpackages: [
     {
       root: 'packs',
-      pages: ['service/service', 'feedback/feedback']
+      pages: [
+        'service/service',
+        'feedback/feedback',
+        'identity-info/identity-info',
+        'inclusive-finance/inclusive-finance',
+        'inclusive-card/inclusive-card'
+      ]
     }
   ],
   tabBar: {

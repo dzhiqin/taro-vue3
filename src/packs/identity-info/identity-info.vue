@@ -2,11 +2,17 @@
   <view class="iden padding">
     <nut-form ref="idenForm" :model-value="state" :rules="idenFormRules">
       <my-title class="margin-top margin-left">
-        <view class="text-bolder">请上传身份证正反面，确保照片清晰完整</view>
+        <view class="text-bold">请上传身份证正反面，确保照片清晰完整</view>
       </my-title>
       <view class="flex justify-around margin-top">
         <my-id-uploader @ocrResult="onOcrFrontResult" />
         <my-id-uploader size="back" @ocrResult="onOcrBackResult" />
+      </view>
+      <view class="margin-top text-center">
+        <img
+          :src="formatImgUrl('weapp/temp7753166143815885868img-id-example_1706240660023.png')"
+          class="id-example"
+        />
       </view>
       <nut-form-item label="国家" prop="country">
         <nut-input
@@ -89,7 +95,7 @@
           placeholder="上传身份证后自动识别"
         />
       </nut-form-item>
-      <my-title class="margin-top margin-left"><view class="text-bolder">个人信息</view></my-title>
+      <my-title class="margin-top margin-left"><view class="text-bold">个人信息</view></my-title>
       <nut-form-item v-model="state.residence" label="现居住地" prop="residence">
         <picker mode="region" @change="onRegionChange" :value="state.residence">
           <my-select-cell>
@@ -169,7 +175,13 @@ import { reactive, ref } from 'vue'
 import { phoneValidator } from '@/tools/validator'
 import { provCityDistRegex } from '@/tools/static'
 import Taro from '@tarojs/taro'
-import { taroToast, taroFailureToast, taroShowLoading, taroHideLoading } from '@/tools/tools'
+import {
+  taroToast,
+  taroFailureToast,
+  taroShowLoading,
+  taroHideLoading,
+  formatImgUrl
+} from '@/tools/tools'
 import { occupations } from '@/libs/occupation'
 import { updatePersonalIdInfo } from '@/apis/common.api'
 const idenForm = ref(null)

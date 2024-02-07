@@ -3,13 +3,13 @@
     <my-navigator title="业务办理" />
     <my-logo class="margin" />
     <view class="loan-content">
-      <my-title><view class="text-bolder">申请步骤</view></my-title>
-      <nut-steps :current="1" @click-step="onClickStep" class="margin-top">
+      <my-title><view class="text-bold">申请步骤</view></my-title>
+      <nut-steps :current="1" class="margin-top">
         <nut-step title="提交需求">1</nut-step>
         <nut-step title="专员服务">2</nut-step>
         <nut-step title="处理完成">3</nut-step>
       </nut-steps>
-      <my-title><view class="text-bolder">信息填写</view></my-title>
+      <my-title><view class="text-bold">信息填写</view></my-title>
       <nut-form ref="stateForm" :model-value="state" :rules="formRules">
         <nut-form-item label="姓名" prop="name">
           <nut-input

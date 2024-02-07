@@ -1,4 +1,4 @@
-import { chineseNameRegex, phoneNumberRegex, idCardRegex } from './static'
+import { chineseNameRegex, phoneNumberRegex, idCardRegex, emailRegex } from './static'
 
 export const chineseNameValidator = name => {
   if (chineseNameRegex.test(name)) {
@@ -19,5 +19,12 @@ export const idNumValidator = idNum => {
     return Promise.resolve()
   } else {
     return Promise.reject('请输入正确格式的手机号')
+  }
+}
+export const emailValidator = email => {
+  if (emailRegex.test(email)) {
+    return Promise.resolve()
+  } else {
+    return Promise.reject('请输入正确格式的电子邮箱')
   }
 }

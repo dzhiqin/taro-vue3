@@ -27,22 +27,23 @@
         </nut-swiper>
       </view>
       <nut-grid class="home-grid" :column-num="3" :border="false" gutter="20">
-        <!-- <home-box-item imgName="etccar.png" title="ETC" /> -->
-        <!-- <home-box-item imgName="shop.png" title="商户" /> -->
         <home-box-item
           imgName="icon-business-loan.png"
           title="创业担保贷"
           path="/pages/business/business"
         />
-        <home-box-item imgName="loan.png" title="新市民贷" />
+        <home-box-item imgName="huikuan.png" title="提前还款" />
+
         <home-box-item
           imgName="icon-fill-info@2x.png"
           title="信息完善"
-          path="/pages/identity-info/identity-info"
+          path="/packs/identity-info/identity-info"
         />
+        <home-box-item imgName="loan.png" title="新市民贷" />
         <home-box-item imgName="icon-card@2x.png" title="普惠卡申领" />
-        <home-box-item imgName="huikuan.png" title="提前还款" />
         <home-box-item imgName="usercard.png" title="社保卡" />
+        <!-- <home-box-item imgName="shop.png" title="商户" /> -->
+        <!-- <home-box-item imgName="etccar.png" title="ETC" /> -->
         <!-- <home-box-item imgName="zhengxin.png" title="征信查询" /> -->
         <!-- <home-box-item imgName="bankcard.png" title="贷记卡申领" /> -->
         <!-- <home-box-item imgName="invoice.png" title="发票打印" /> -->
@@ -108,7 +109,7 @@
       </view>
 
       <view class="home-manager margin">
-        <my-title><view class="text-bolder">专属服务</view></my-title>
+        <my-title><view class="text-bold">专属服务</view></my-title>
         <view class="home-manager-content padding flex align-center margin-top-xs radius-sm">
           <nut-avatar size="large"></nut-avatar>
           <view class="margin-left">

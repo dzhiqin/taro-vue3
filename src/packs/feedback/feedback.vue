@@ -6,7 +6,7 @@
         class="fb-img"
       />
     </view>
-    <my-title class="margin"><view class="text-bolder">客户反馈</view></my-title>
+    <my-title class="margin"><view class="text-bold">客户反馈</view></my-title>
     <view class="box-shadow margin">
       <nut-textarea
         v-model="val"
@@ -16,7 +16,7 @@
         placeholder="请输入您的意见反馈，我们将不断优化改进"
       />
     </view>
-    <my-title class="margin"><view class="text-bolder">图片上传</view></my-title>
+    <my-title class="margin"><view class="text-bold">图片上传</view></my-title>
     <nut-uploader
       :disabled="isFly"
       class="margin"

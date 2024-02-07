@@ -8,7 +8,7 @@
     </view>
 
     <view v-show="hasRecord" class="pre-record">
-      <my-title class="margin"><view class="text-bolder">申请记录</view></my-title>
+      <my-title class="margin"><view class="text-bold">申请记录</view></my-title>
       <nut-cell-group>
         <nut-cell title="名称" :desc="record.customerName"></nut-cell>
         <nut-cell title="还款账号" :desc="record.customerAccount"></nut-cell>
@@ -28,7 +28,7 @@
       </nut-cell-group>
     </view>
     <nut-form v-show="!hasRecord" ref="stateForm" :model-value="state" :rules="formRules">
-      <my-title class="margin"><view class="text-bolder">填写申请</view></my-title>
+      <my-title class="margin"><view class="text-bold">填写申请</view></my-title>
       <nut-form-item label="账户类型" prop="accountType">
         <nut-radio-group direction="horizontal" v-model="state.accountType">
           <nut-radio label="对公客户">对公客户</nut-radio>
@@ -97,6 +97,7 @@
           @choose="onChooseDate"
         >
         </nut-calendar>
+        <view class="text-sm">只能预约30天后的日期</view>
       </nut-form-item>
       <nut-form-item label="提前还款理由" :label-width="110" prop="reason">
         <nut-input
@@ -110,13 +111,13 @@
       <nut-form-item label="提前还款金额" :label-width="110" prop="prepaymentSum">
         <nut-input
           v-model="state.prepaymentSum"
-          type="text"
+          type="digit"
           class="nut-input-text"
           :border="false"
           placeholder="请填写金额"
         >
           <template #right>
-            <view>元</view>
+            <text class="nutui-iconfont nut-icon">元</text>
           </template>
         </nut-input>
       </nut-form-item>
@@ -186,7 +187,6 @@ const nameVlidator = name => {
 }
 const calendarVisible = ref(false)
 const onChooseDate = param => {
-  console.log('choose data', param)
   state.appointmentDate = param[3]
 }
 const currentTime = new Date().getTime()
@@ -245,6 +245,7 @@ const handleSubmit = () => {
     accountType: state.accountType,
     appointmentTime: state.appointmentDate,
     enterpriseName: state.enterpriseName,
+    applyIdNumber: state.idNum,
     applyName: state.name,
     applyMobile: state.phone,
     reason: state.reason,

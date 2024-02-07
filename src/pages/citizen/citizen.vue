@@ -8,7 +8,7 @@
       </view>
       <view class="citizen-banner-title font-fzsk"> 最高可借额度 </view>
       <view class="flex justify-between">
-        <view class="text-xxl margin-top margin-left-lg text-white text-bolder font-fzsk"
+        <view class="text-xxl margin-top margin-left-lg text-white text-bold font-fzsk"
           >300000元</view
         >
         <view class="flex-column align-center citizen-banner-abs">
@@ -24,14 +24,14 @@
       </view>
     </view>
     <view class="citizen-apply">
-      <my-title><view class="text-bolder">申请条件</view></my-title>
+      <my-title><view class="text-bold">申请条件</view></my-title>
       <apply-option class="margin-top-sm">个人信用记录良好</apply-option>
       <apply-option>申请过石狮市新市民积分</apply-option>
       <apply-option>申请年龄23-55周岁</apply-option>
       <apply-option>现居住或工作在石狮，并且超过12个月</apply-option>
     </view>
     <view class="citizen-product">
-      <my-title><view class="text-bolder">产品</view></my-title>
+      <my-title><view class="text-bold">产品</view></my-title>
       <view class="radius padding bg-white margin-top">
         <view class="flex align-center">
           <my-tag><view class="text-slim">信用贷</view></my-tag>

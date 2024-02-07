@@ -31,6 +31,9 @@ page {
 .flex{
   display: flex;
 }
+.flex-grow-1{
+  flex-grow: 1;
+}
 .flex-column{
   display: flex;
   flex-direction: column;
@@ -65,6 +68,14 @@ page {
 .margin-tb{
   margin-top: 16px;
   margin-bottom: 16px;
+}
+.margin-tb-sm{
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.margin-tb-xs{
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 .margin-lg{
   margin: 32px;
@@ -166,10 +177,10 @@ page {
   font-size: 26px;
 }
 .text-bold{
-  font-weight: 500;
+  font-weight: bold;
 }
 .text-bolder{
-  font-weight: 700;
+  font-weight: bolder;
 }
 .text-slim{
   font-weight: 300;
@@ -224,5 +235,9 @@ page {
 .box-shadow{
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
-
+.id-example {
+  width: 298px;
+  height: 58px;
+  margin: auto;
+}
 // 解决iPhone x 以后的机型 底部安全区域的问题 https://jelly.jd.com/article/6006b1055b6c6a01506c87fd

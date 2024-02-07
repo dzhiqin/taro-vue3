@@ -3,7 +3,7 @@
     <my-navigator title="测算额度" />
     <my-logo class="margin"></my-logo>
     <view class="citizen-content">
-      <my-title><view class="text-bolder">请上传身份证正反面，确保照片清晰完整</view></my-title>
+      <my-title><view class="text-bold">请上传身份证正反面，确保照片清晰完整</view></my-title>
       <view class="flex justify-around margin-top">
         <my-id-uploader @ocrResult="onOcrFrontResult" />
         <my-id-uploader size="back" @ocrResult="onOcrBackResult" />
@@ -14,7 +14,7 @@
           class="id-example"
         />
       </view>
-      <my-title><view class="text-bolder margin-top">详细信息</view></my-title>
+      <my-title><view class="text-bold margin-top">详细信息</view></my-title>
       <nut-form ref="stateForm" :model-value="state" :rules="formRules">
         <nut-form-item label="姓名" prop="name">
           <nut-input
@@ -240,11 +240,7 @@ const handleSubmit = () => {
       padding: 16px;
     }
   }
-  .id-example {
-    width: 298px;
-    height: 58px;
-    margin: auto;
-  }
+
   .nut-cell-group__wrap {
     box-shadow: none;
   }

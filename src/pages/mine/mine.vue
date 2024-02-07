@@ -13,7 +13,7 @@
         <MyGridItem
           imgName="icon-fill-in.png"
           title="信息完善"
-          path="/pages/identity-info/identity-info"
+          path="/packs/identity-info/identity-info"
         />
       </nut-grid>
     </view>
@@ -32,7 +32,6 @@ import UserProfile from './components/user-profile.vue'
   background: #f5f5f5;
   height: 100vh;
   &-head {
-    background: #f5f5f5;
     background-image: url('../../assets/img/background.png');
     background-repeat: no-repeat;
     background-size: 100%;
