@@ -6,7 +6,10 @@
         class="pre-img"
       />
     </view>
-
+    <!-- <view @click="handleClick">123</view>
+    <my-agreement-modal :visible="modalVisible" @confirm="modalChange">
+      content....
+    </my-agreement-modal> -->
     <view v-show="hasRecord" class="pre-record">
       <my-title class="margin"><view class="text-bold">申请记录</view></my-title>
       <nut-cell-group>
@@ -142,6 +145,14 @@ import {
 } from '@/tools/tools'
 import { chineseNameRegex, idCardRegex } from '@/tools/static'
 import { getPrepaymentApplyRecord, addPrepaymentApplyRecord } from '@/apis/prepayment.api'
+// import { MyAgreementModal } from '@/components/index'
+// const modalVisible = ref(false)
+// const handleClick = () => {
+//   modalVisible.value = true
+// }
+// const modalChange = () => {
+//   modalVisible.value = false
+// }
 const { openId, code } = taroGetParams()
 const APPLY_STATUS = {
   pass: '1',

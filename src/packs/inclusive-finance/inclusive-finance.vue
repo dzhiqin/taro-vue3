@@ -32,17 +32,23 @@
       <option-item text="申请人年龄23-55周岁" />
       <option-item text="现居住或工作在石狮市，并且超过12个月" />
       <view class="margin-lg">
-        <nut-button type="primary" block @click="onSubmit">立即填写材料</nut-button>
+        <nut-button type="primary" block @click="navToApply">立即填写材料</nut-button>
         <view class="margin-top">
-          <nut-button type="info" block @click="onSubmit">填写记录</nut-button>
+          <nut-button type="info" block @click="navToRecord">填写记录</nut-button>
         </view>
       </view>
     </view>
   </view>
 </template>
 <script setup>
-import { requireImage } from '@/tools/tools'
+import { requireImage, taroNavigateToPage } from '@/tools/tools'
 import OptionItem from './components/option-item.vue'
+const navToApply = () => {
+  taroNavigateToPage('/packs/inclusive-card/inclusive-card')
+}
+const navToRecord = () => {
+  taroNavigateToPage('/packs/inclusive-apply-record/inclusive-apply-record')
+}
 </script>
 <style lang="scss">
 .fina {

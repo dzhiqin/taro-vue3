@@ -6,4 +6,17 @@ import MyTag from './my-tag.vue'
 import MyTitle from './my-title.vue'
 import MySmsBtn from './my-sms-btn.vue'
 import MySelectCell from './my-select-cell.vue'
-export { MyInput, MyIdUploader, MyLogo, MyNavigator, MyTag, MyTitle, MySmsBtn, MySelectCell }
+import MyModal from './my-modal.vue'
+import MyAgreementModal from './my-agreement-modal.vue'
+export {
+  MyInput,
+  MyIdUploader,
+  MyLogo,
+  MyNavigator,
+  MyTag,
+  MyTitle,
+  MySmsBtn,
+  MySelectCell,
+  MyModal,
+  MyAgreementModal
+}

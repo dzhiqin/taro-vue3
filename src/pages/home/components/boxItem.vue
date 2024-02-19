@@ -5,7 +5,7 @@
   </nut-grid-item>
 </template>
 <script setup>
-import { requireImage } from '@/tools/tools'
+import { requireImage, taroToast } from '@/tools/tools'
 import Taro from '@tarojs/taro'
 let props = defineProps({
   imgName: String,
@@ -13,9 +13,10 @@ let props = defineProps({
   path: String
 })
 const handleClick = () => {
-  console.log(props.path)
   if (props.path) {
     Taro.navigateTo({ url: props.path })
+  } else {
+    taroToast('功能完善中')
   }
 }
 </script>

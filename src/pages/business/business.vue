@@ -98,9 +98,11 @@
             </nut-form-item>
             <nut-form-item v-model="state.address" label="办理网点" prop="orgName">
               <picker mode="selector" @change="onOrgChange" :range="orgRange">
-                <view class="picker text-black">
-                  {{ state.orgName ? state.orgName : '请选择办理网点' }}
-                </view>
+                <my-select-cell>
+                  <view class="picker text-black">
+                    {{ state.orgName ? state.orgName : '请选择办理网点' }}
+                  </view>
+                </my-select-cell>
               </picker>
             </nut-form-item>
             <nut-form-item label="是否有营业执照" :label-width="180" prop="hasBusinessLicence">

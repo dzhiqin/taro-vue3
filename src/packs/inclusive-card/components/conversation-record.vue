@@ -1,15 +1,16 @@
 <template>
   <view>
     <my-title class="margin"><view class="text-bold">贷款谈话记录</view></my-title>
-    <nut-form ref="stateForm" :model-value="state" :rules="formRules">
+    <nut-form ref="recordForm" :model-value="conversationRecord" :rules="formRules">
       <nut-form-item
         label="1、申请人是否已经确保提交给贷款人有关证明资料、委托手续是真实、合法、有效的，并已经确知任何欺诈、违约行为均要承担相应的法律责任？"
         label-position="top"
         prop="state1"
       >
-        <nut-radio-group direction="horizontal" v-model="state.state1">
-          <nut-radio label="1">是</nut-radio>
-          <nut-radio label="0">否</nut-radio>
+        <nut-radio-group direction="horizontal" v-model="conversationRecord.state1">
+          <nut-radio v-for="item in YesNoOptions" :key="item.value" :label="item.value">
+            {{ item.text }}
+          </nut-radio>
         </nut-radio-group>
       </nut-form-item>
       <nut-form-item
@@ -17,15 +18,21 @@
         label-position="top"
         prop="state2"
       >
-        <nut-radio-group direction="horizontal" v-model="state.state2">
-          <nut-radio label="1">是</nut-radio>
-          <nut-radio label="0">否</nut-radio>
+        <nut-radio-group direction="horizontal" v-model="conversationRecord.state2">
+          <!-- <nut-radio label="1">是</nut-radio>
+          <nut-radio label="0">否</nut-radio> -->
+          <nut-radio v-for="item in YesNoOptions" :key="item.value" :label="item.value">
+            {{ item.text }}
+          </nut-radio>
         </nut-radio-group>
       </nut-form-item>
       <nut-form-item label="3、申请人是否有重大不良信用记录？" label-position="top" prop="state3">
-        <nut-radio-group direction="horizontal" v-model="state.state3">
-          <nut-radio label="1">是</nut-radio>
-          <nut-radio label="0">否</nut-radio>
+        <nut-radio-group direction="horizontal" v-model="conversationRecord.state3">
+          <!-- <nut-radio label="1">是</nut-radio>
+          <nut-radio label="0">否</nut-radio> -->
+          <nut-radio v-for="item in YesNoOptions" :key="item.value" :label="item.value">
+            {{ item.text }}
+          </nut-radio>
         </nut-radio-group>
       </nut-form-item>
       <nut-form-item
@@ -33,9 +40,12 @@
         label-position="top"
         prop="state4"
       >
-        <nut-radio-group direction="horizontal" v-model="state.state4">
-          <nut-radio label="1">是</nut-radio>
-          <nut-radio label="0">否</nut-radio>
+        <nut-radio-group direction="horizontal" v-model="conversationRecord.state4">
+          <!-- <nut-radio label="2">清楚</nut-radio>
+          <nut-radio label="3">不清楚</nut-radio> -->
+          <nut-radio v-for="item in ClearOrNotOptions" :key="item.value" :label="item.value">
+            {{ item.text }}
+          </nut-radio>
         </nut-radio-group>
       </nut-form-item>
       <nut-form-item
@@ -43,36 +53,66 @@
         label-position="top"
         prop="state5"
       >
-        <nut-radio-group direction="horizontal" v-model="state.state5">
-          <nut-radio label="1">是</nut-radio>
-          <nut-radio label="0">否</nut-radio>
+        <nut-radio-group direction="horizontal" v-model="conversationRecord.state5">
+          <!-- <nut-radio label="1">是</nut-radio>
+          <nut-radio label="0">否</nut-radio> -->
+          <nut-radio v-for="item in YesNoOptions" :key="item.value" :label="item.value">
+            {{ item.text }}
+          </nut-radio>
         </nut-radio-group>
       </nut-form-item>
     </nut-form>
     <view class="flex-column margin-lg">
-      <nut-button type="primary" @click="onNext">开始签署</nut-button>
-      <nut-button plain type="primary" @click="onPrev">上一步</nut-button>
+      <nut-button type="primary" block @click="onNext">开始签署</nut-button>
+      <view class="margin-top">
+        <nut-button plain block type="primary" @click="onPrev">上一步</nut-button>
+      </view>
     </view>
   </view>
 </template>
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
+import Taro from '@tarojs/taro'
+import { YesNoOptions, ClearOrNotOptions } from '@/tools/static'
+import { taroFailureToast } from '@/tools/tools'
 const props = defineProps({
   current: Number
 })
-const emits = defineEmits(['change'])
+const recordForm = ref(null)
+const conversationRecordTemp = Taro.getStorageSync('recordForm') || null
+const conversationRecord = reactive(
+  conversationRecordTemp
+    ? conversationRecordTemp
+    : {
+        state1: '1',
+        state2: '0',
+        state3: '0',
+        state4: '2',
+        state5: '1'
+      }
+)
+const formRules = {
+  state1: [{ required: true, message: '请选择' }],
+  state2: [{ required: true, message: '请选择' }],
+  state3: [{ required: true, message: '请选择' }],
+  state4: [{ required: true, message: '请选择' }],
+  state5: [{ required: true, message: '请选择' }]
+}
+const emits = defineEmits(['change', 'submit'])
 const onPrev = () => {
   emits('change', { page: props.current - 1 })
 }
 const onNext = () => {
-  emits('onNext')
+  recordForm.value.validate().then(({ valid, errors }) => {
+    if (valid) {
+      // do something
+      emits('submit')
+      Taro.setStorageSync('recordForm', conversationRecord)
+    } else {
+      console.log(errors)
+      taroFailureToast('请按要求填完整信息再提交')
+    }
+  })
 }
-const state = reactive({
-  state1: '',
-  state2: '',
-  state3: '',
-  state4: '',
-  state5: ''
-})
 </script>
 <style lang="scss"></style>

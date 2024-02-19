@@ -12,6 +12,10 @@ export const YesNoOptions = [
   { value: '1', text: '是', label: '是', title: '是' },
   { value: '0', text: '否', label: '否', title: '否' }
 ]
+export const ClearOrNotOptions = [
+  { value: '2', text: '清楚', label: '清楚', title: '清楚' },
+  { value: '3', text: '不清楚', label: '不清楚', title: '不清楚' }
+]
 export const TaxTypeOptions = [
   { value: '1', text: '仅为中国税收居民', label: '仅为中国税收居民', title: '仅为中国税收居民' },
   { value: '2', text: '仅为非居民', label: '仅为非居民', title: '仅为非居民' },
@@ -20,6 +24,20 @@ export const TaxTypeOptions = [
     text: '即是中国税收居民又是其他国家(地区)税收居民',
     label: '即是中国税收居民又是其他国家(地区)税收居民',
     title: '即是中国税收居民又是其他国家(地区)税收居民'
+  }
+]
+export const NoTaxCodeReasonOptions = [
+  {
+    value: '1',
+    text: '居民国(地区)不发放纳税人识别号',
+    label: '居民国(地区)不发放纳税人识别号',
+    title: '居民国(地区)不发放纳税人识别号'
+  },
+  {
+    value: '2',
+    text: '账户持有人未能取得纳税人识别号',
+    label: '账户持有人未能取得纳税人识别号',
+    title: '账户持有人未能取得纳税人识别号'
   }
 ]
 export const GuaranteeTypeOptions = [{ value: '1', text: '信用', label: '信用', title: '信用' }]
@@ -69,6 +87,7 @@ export const RepayTypeOptions = [
   { value: '201', text: '等额本金', label: '等额本金', title: '等额本金' }
 ]
 export const FinanceRepayTypeOptions = [
+  { value: '', text: '请选择还款方式', label: '请选择还款方式', title: '请选择还款方式' },
   { value: '1', text: '最低还款额', label: '最低还款额', title: '最低还款额' },
   { value: '2', text: '全额还款', label: '全额还款', title: '全额还款' }
 ]
@@ -79,7 +98,7 @@ export const CardTypeOptions = [
 export const LoanTypeOptions = [{ value: '1', text: '新增', label: '新增', title: '新增' }]
 export const EducationOptions = [
   { value: '0', text: '初中及以下', label: '初中及以下', title: '初中及以下' },
-  { value: '1', text: '高中及中转', label: '高中及中转', title: '高中及中转' },
+  { value: '1', text: '高中及中转', label: '高中及中转', title: '高中及中专' },
   { value: '2', text: '大专', label: '大专', title: '大专' },
   { value: '3', text: '本科', label: '本科', title: '本科' },
   { value: '4', text: '硕士', label: '硕士', title: '硕士' },

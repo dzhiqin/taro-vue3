@@ -13,11 +13,10 @@
     />
   </view>
   <my-title class="margin"><view class="text-bold">个人信息填写</view></my-title>
-
-  <nut-form ref="stateForm" :model-value="state" :rules="formRules">
+  <nut-form ref="loanPersonForm" :model-value="loanPerson" :rules="formRules">
     <nut-form-item label="姓名" prop="name">
       <nut-input
-        v-model="state.name"
+        v-model="loanPerson.name"
         class="nut-input-text"
         placeholder="上传身份证后自动识别"
         readonly
@@ -26,7 +25,7 @@
     </nut-form-item>
     <nut-form-item label="身份证号" prop="idNum">
       <nut-input
-        v-model="state.idNum"
+        v-model="loanPerson.idNum"
         class="nut-input-text"
         placeholder="上传身份证后自动识别"
         readonly
@@ -34,16 +33,16 @@
       />
     </nut-form-item>
     <nut-form-item label="现居住地" prop="residence">
-      <picker mode="region" @change="onRegionChange" :value="state.residence">
+      <picker mode="region" @change="onRegionChange" :value="loanPerson.residence">
         <my-select-cell>
-          <view class="text-black"> {{ state.residence.join('') }} </view>
+          <view class="text-black"> {{ loanPerson.residence.join('') }} </view>
         </my-select-cell>
       </picker>
     </nut-form-item>
     <nut-form-item label="详细地址" prop="residenceDetail">
       <nut-input
         class="nut-input-text"
-        v-model="state.residenceDetail"
+        v-model="loanPerson.residenceDetail"
         type="text"
         :border="false"
         placeholder="请输入详细地址"
@@ -54,11 +53,11 @@
         class="nut-input-text"
         placeholder="请输入手机号"
         type="number"
-        v-model="state.phone"
+        v-model="loanPerson.phone"
         @blur="blurValidator('phone')"
       >
         <template #right>
-          <my-sms-btn :phone="state.phone" type="personal" />
+          <my-sms-btn :phone="loanPerson.phone" type="personal" />
         </template>
       </nut-input>
     </nut-form-item>
@@ -67,7 +66,7 @@
         class="nut-input-text"
         placeholder="请输入验证码"
         type="text"
-        v-model="state.sms"
+        v-model="loanPerson.sms"
       />
     </nut-form-item>
     <nut-form-item label="电子邮箱" prop="email">
@@ -75,31 +74,44 @@
         class="nut-input-text"
         placeholder="请输入电子邮箱"
         type="text"
-        v-model="state.email"
+        v-model="loanPerson.email"
       />
     </nut-form-item>
     <nut-form-item label="婚姻状况" prop="maritialStatus">
-      <nut-input
-        class="nut-input-text"
-        placeholder="请选择婚姻状况"
-        type="text"
-        v-model="state.maritialStatus"
-      />
+      <picker
+        mode="selector"
+        :range="MaritialStatusOptions.map(i => i.text)"
+        @change="onPickerChange($event, 'maritialStatus', MaritialStatusOptions)"
+        :value="loanPerson.maritialStatus"
+      >
+        <my-select-cell>
+          <view class="text-black">{{
+            MaritialStatusOptions.find(i => i.value === loanPerson.maritialStatus)?.text ||
+            '请选择婚姻状态'
+          }}</view>
+        </my-select-cell>
+      </picker>
     </nut-form-item>
     <nut-form-item label="教育程度" prop="education">
-      <nut-input
-        class="nut-input-text"
-        placeholder="请选择教育承担"
-        type="text"
-        v-model="state.education"
-      />
+      <picker
+        mode="selector"
+        :range="EducationOptions.map(i => i.text)"
+        @change="onPickerChange($event, 'education', EducationOptions)"
+        :value="loanPerson.education"
+      >
+        <my-select-cell>
+          <view class="text-black">{{
+            EducationOptions.find(i => i.value === loanPerson.education)?.text || '请选择教育程度'
+          }}</view>
+        </my-select-cell>
+      </picker>
     </nut-form-item>
     <nut-form-item label="单位名称" prop="enterpriseName">
       <nut-input
         class="nut-input-text"
         placeholder="请填写单位名称"
         type="text"
-        v-model="state.enterpriseName"
+        v-model="loanPerson.enterpriseName"
       />
     </nut-form-item>
     <nut-form-item label="任职部门" prop="department">
@@ -107,92 +119,138 @@
         class="nut-input-text"
         placeholder="请填写任职部门"
         type="text"
-        v-model="state.department"
+        v-model="loanPerson.department"
       />
     </nut-form-item>
     <nut-form-item label="职务" prop="job">
-      <nut-input class="nut-input-text" placeholder="请填写职务" type="text" v-model="state.job" />
+      <picker
+        mode="selector"
+        :range="JobOptions.map(i => i.text)"
+        @change="onPickerChange($event, 'job', JobOptions)"
+        :value="loanPerson.job"
+      >
+        <my-select-cell>
+          <view class="text-black">
+            {{ JobOptions.find(i => i.value === loanPerson.job)?.text || '请选择职务' }}</view
+          >
+        </my-select-cell>
+      </picker>
     </nut-form-item>
     <nut-form-item label="职称" prop="title">
-      <nut-input
-        class="nut-input-text"
-        placeholder="请选择职称"
-        type="text"
-        v-model="state.title"
-      />
+      <picker
+        mode="selector"
+        :range="TitleOptions.map(i => i.text)"
+        @change="onPickerChange($event, 'title', TitleOptions)"
+        :value="loanPerson.title"
+      >
+        <my-select-cell>
+          <view class="text-black">
+            {{ TitleOptions.find(i => i.value === loanPerson.title)?.text || '请选择职称' }}</view
+          >
+        </my-select-cell>
+      </picker>
     </nut-form-item>
     <nut-form-item label="单位电话" prop="officePhone">
       <nut-input
         class="nut-input-text"
         placeholder="请填写单位电话(选填)"
         type="text"
-        v-model="state.officePhone"
+        v-model="loanPerson.officePhone"
       />
     </nut-form-item>
     <nut-form-item label="单位地址" prop="officeAddress">
       <nut-input
         class="nut-input-text"
-        placeholder="请填写单位地址(选填)"
+        placeholder="请填写单位地址"
         type="text"
-        v-model="state.officeAddress"
+        v-model="loanPerson.officeAddress"
       />
     </nut-form-item>
     <view class="margin-lg flex-column align-center">
-      <view class="margin-bottom-sm">
-        <nut-checkbox v-model="agreement" class="text-sm">
-          本人已阅读并同意<text class="text-blue">《新市民积分贷款合同》</text>
-        </nut-checkbox>
+      <view class="margin-bottom-sm flex align-center">
+        <nut-checkbox v-model="agreed" class="text-sm"> 本人已阅读并同意 </nut-checkbox>
+        <view class="text-blue text-sm" @click="handleClick">《新市民积分贷款合同》</view>
       </view>
-      <nut-button type="info" block @click="onSubmit">NEXT</nut-button>
-      <!-- <view> </view> -->
+      <nut-button type="primary" block @click="onSubmit">下一步</nut-button>
     </view>
   </nut-form>
+  <my-agreement-modal :visible="modalVisible" @confirm="modalChange">
+    content....
+  </my-agreement-modal>
 </template>
 <script setup>
 import { formatImgUrl, taroToast, taroFailureToast } from '@/tools/tools'
 import { reactive, ref } from 'vue'
+import { MaritialStatusOptions, EducationOptions, JobOptions, TitleOptions } from '@/tools/static'
 import { phoneValidator, emailValidator } from '@/tools/validator'
+import Taro from '@tarojs/taro'
+import { MyAgreementModal } from '@/components/index'
 const props = defineProps({
   current: Number
 })
 const emits = defineEmits(['change'])
-const agreement = ref(false)
-const stateForm = ref(null)
-let state = reactive({
-  name: '',
-  idNum: '',
-  nameSpelling: '',
-  residence: ['福建省', '泉州市', '石狮市'],
-  residenceDetail: '',
-  phone: '',
-  sms: '',
-  email: '',
-  maritialStatus: '',
-  education: '',
-  enterpriseName: '',
-  department: '', // 部门
-  job: '', // 职务
-  title: '', //职称
-  officeAddress: '',
-  officePhone: '',
-  authority: ''
-})
+const agreed = ref(false)
+const loanPersonForm = ref(null)
+const loanPersonTemp = Taro.getStorageSync('loanPersonForm') || null
+const modalVisible = ref(false)
+const handleClick = () => {
+  modalVisible.value = true
+}
+const modalChange = () => {
+  modalVisible.value = false
+}
+let loanPerson = reactive(
+  loanPersonTemp
+    ? loanPersonTemp
+    : {
+        name: '',
+        idNum: '',
+        nameSpelling: '',
+        address: '',
+        sex: '',
+        birth: '',
+        validDate: '',
+        residence: ['福建省', '泉州市', '石狮市'],
+        residenceDetail: '',
+        phone: '',
+        sms: '',
+        email: '',
+        maritialStatus: '',
+        maritialStatusText: '',
+        education: '',
+        enterpriseName: '',
+        department: '', // 部门
+        job: '', // 职务
+        title: '', //职称
+        officeAddress: '',
+        officePhone: ''
+      }
+)
 const onSubmit = () => {
-  stateForm.value.validate().then(({ valid, errors }) => {
+  loanPersonForm.value.validate().then(({ valid, errors }) => {
     if (valid) {
+      if (!agreed.value) {
+        taroFailureToast('请勾选协议')
+        return
+      }
       emits('change', { page: props.current + 1 })
+      Taro.setStorageSync('loanPersonForm', loanPerson)
     } else {
       console.log(errors)
       taroFailureToast('信息不完整')
     }
   })
-  emits('change', { page: props.current + 1 })
+}
+const onPickerChange = (e, name, obj) => {
+  const index = e.detail.value
+  loanPerson[name] = obj[index].value
+  // console.log('obj', obj[index].value)
 }
 const onOcrFrontResult = e => {
   const { result, message, data } = e
   if (result) {
-    const { name, idNum, nameSpelling } = data
-    state = Object.assign(state, { name, idNum, nameSpelling })
+    const { name, idNum, nameSpelling, address, birth, sex } = data
+    loanPerson = Object.assign(loanPerson, { name, idNum, nameSpelling, address, birth, sex })
   } else {
     taroToast(message)
   }
@@ -200,22 +258,23 @@ const onOcrFrontResult = e => {
 const onOcrBackResult = e => {
   const { result, message, data } = e
   if (result) {
-    const { authority } = data
-    state = Object.assign(state, { authority })
+    const { validDate } = data
+    loanPerson = Object.assign(loanPerson, { validDate })
   } else {
     taroToast(message)
   }
 }
 const onRegionChange = e => {
-  state.residence = e.detail.value
+  loanPerson.residence = e.detail.value
 }
 const blurValidator = prop => {
-  stateForm.value.validate(prop)
+  loanPersonForm.value.validate(prop)
 }
 const formRules = {
   name: [{ required: true }],
   idNum: [{ required: true }],
-  authority: [{ required: true }],
+  validDate: [{ required: true }],
+  address: [{ required: true }],
   residenceDetail: [{ required: true, message: '请填写居住地址' }],
   phone: [
     { required: true, message: '请填写手机号' },

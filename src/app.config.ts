@@ -29,7 +29,8 @@ export default {
         'feedback/feedback',
         'identity-info/identity-info',
         'inclusive-finance/inclusive-finance',
-        'inclusive-card/inclusive-card'
+        'inclusive-card/inclusive-card',
+        'inclusive-apply-record/inclusive-apply-record'
       ]
     }
   ],

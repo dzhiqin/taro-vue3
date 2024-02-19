@@ -32,7 +32,7 @@
           title="创业担保贷"
           path="/pages/business/business"
         />
-        <home-box-item imgName="huikuan.png" title="提前还款" />
+        <home-box-item imgName="huikuan.png" title="提前还款" path="/pages/prepayment/prepayment" />
 
         <home-box-item
           imgName="icon-fill-info@2x.png"
