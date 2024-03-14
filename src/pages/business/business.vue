@@ -158,12 +158,15 @@ import { Left, Right } from '@nutui/icons-vue-taro'
 import { Picker } from '@tarojs/components'
 import { chineseNameValidator, phoneValidator } from '@/tools/validator'
 import { getAllBranches } from '@/apis/common.api'
+import { useStore } from '@/stores'
 import Taro from '@tarojs/taro'
 import {
   getBusinessRadioOptions,
   checkBusinessLoanSms,
   submitBusinessLoanForm
 } from '@/apis/business.api'
+const auth = useStore('auth')
+const openId = computed(() => auth.userInfo.openId)
 let state = reactive({
   name: '',
   phone: '',
@@ -221,7 +224,7 @@ const handleSubmit = () => {
     clientName: state.name,
     clientPhone: state.phone,
     sysOrgCode: state.orgId,
-    openId: ''
+    openId: openId.value
   }
   submitBusinessLoanForm(params).then(res => {
     if (res.code === 200) {

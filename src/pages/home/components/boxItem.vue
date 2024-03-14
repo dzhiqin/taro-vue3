@@ -1,7 +1,7 @@
 <template>
   <nut-grid-item @click="handleClick">
     <img :src="requireImage(props.imgName)" class="home-grid-img" />
-    <view>{{ props.title }}</view>
+    <view class="text-normal margin-top-xs">{{ props.title }}</view>
   </nut-grid-item>
 </template>
 <script setup>
@@ -20,16 +20,4 @@ const handleClick = () => {
   }
 }
 </script>
-<style lang="scss">
-.home-grid {
-  margin-top: 20px;
-  &-img {
-    width: 42px;
-    height: 42px;
-  }
-  &-name {
-    font-size: 12px;
-    margin-top: 4px;
-  }
-}
-</style>
+<style lang="scss"></style>

@@ -1,12 +1,15 @@
 import Taro from '@tarojs/taro'
 import { getCurrentInstance } from 'vue'
-
+import config from '@/config'
 export const requireImage = imgName => {
   const png = require(`../assets/img/${imgName}`)
   return png
 }
 export const formatImgUrl = imgName => {
-  return 'https://ssrcb.fjnx.com.cn/jcgprodes/proxy/sys/common/staticPreview/' + imgName
+  return config.publicImgPreviewUrl + imgName
+}
+export const formatUploaderFileUrl = name => {
+  return config.uploaderPreviewUrl + name
 }
 export const taroToast = (msg: string) => {
   Taro.showToast({
@@ -78,4 +81,8 @@ export const humanDateAndTime = date => {
   const dateStr = [year, month, day].map(formatNumber).join('-')
   const timeStr = [hours, minutes, seconds].map(formatNumber).join(':')
   return dateStr + ' ' + timeStr
+}
+export const isStartWith = (key, str) => {
+  const reg = new RegExp('^' + key)
+  return reg.test(str)
 }

@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 interface UserInfoProp {
   nickName: string
   avatarUrl: string
+  openId: string
 }
 
 const useAuth = defineStore({
@@ -22,7 +23,7 @@ const useAuth = defineStore({
       this.isLogin = false
     },
     setUserInfo(userInfo: UserInfoProp) {
-      this.userInfo = userInfo
+      this.userInfo = Object.assign(this.userInfo, userInfo)
     }
   }
 })

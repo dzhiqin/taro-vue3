@@ -74,7 +74,7 @@
           placeholder="上传身份证后自动识别"
         />
       </nut-form-item>
-      <nut-form-item label="证件有效期" prop="validDate">
+      <nut-form-item label="证件有效期" prop="validDate" :label-width="100">
         <nut-input
           v-model="state.validDate"
           class="nut-input-text"
@@ -265,7 +265,7 @@ const handleSubmit = () => {
         Taro.showModal({
           title: '提示',
           content: '修改成功',
-          cancelText: '返回上一页',
+          cancelText: '返回',
           confirmText: '确定',
           success: res => {
             if (res.cancel) {

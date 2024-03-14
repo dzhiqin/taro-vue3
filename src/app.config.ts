@@ -53,5 +53,11 @@ export default {
         text: '我的'
       }
     ]
-  }
+  },
+  permission: {
+    'scope.userLocation': {
+      desc: '你的位置信息将用于小程序定位'
+    }
+  },
+  requiredPrivateInfos: ['getLocation']
 }

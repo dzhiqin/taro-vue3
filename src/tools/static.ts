@@ -104,7 +104,7 @@ export const EducationOptions = [
   { value: '4', text: '硕士', label: '硕士', title: '硕士' },
   { value: '5', text: '博士', label: '博士', title: '博士' }
 ]
-export const MaritialStatusOptions = [
+export const MaritalStatusOptions = [
   { value: '1', text: '未婚', label: '未婚', title: '未婚' },
   { value: '2', text: '已婚', label: '已婚', title: '已婚' },
   { value: '3', text: '离异', label: '离异', title: '离异' },

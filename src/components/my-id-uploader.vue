@@ -7,7 +7,11 @@
       v-model:file-list="imgList"
     >
       <view v-if="imgTemp">
-        <img :src="formatImgUrl(imgTemp)" class="my-id-uploader-img" @click="handleShowPreview" />
+        <img
+          :src="formatUploaderFileUrl(imgTemp)"
+          class="my-id-uploader-img"
+          @click="handleShowPreview"
+        />
         <circle-close class="my-close" @click="handleClear" />
       </view>
 
@@ -35,7 +39,12 @@
 </template>
 <script setup>
 import Config from '@/config/index'
-import { formatImgUrl, taroShowLoading, taroHideLoading } from '@/tools/tools'
+import {
+  formatUploaderFileUrl,
+  formatImgUrl,
+  taroShowLoading,
+  taroHideLoading
+} from '@/tools/tools'
 import { Uploader as NutUploader, ImagePreview as NutImagePreview } from '@nutui/nutui-taro'
 import { ref } from 'vue'
 import { CircleClose } from '@nutui/icons-vue-taro'
@@ -55,7 +64,7 @@ const uploadSuccess = e => {
   const { data } = e.data
   const result = JSON.parse(data)
   imgTemp.value = result.message
-  previewList.value = [{ src: formatImgUrl(imgTemp.value) }]
+  previewList.value = [{ src: formatUploaderFileUrl(imgTemp.value) }]
   handleOcr()
 }
 const handleOcr = () => {
@@ -73,6 +82,7 @@ const handleOcr = () => {
     }
     if (res.code === 200) {
       // props.ocrResult(res.data)
+      errMsg.value = ''
       emits('ocrResult', {
         result: true,
         message: 'success',

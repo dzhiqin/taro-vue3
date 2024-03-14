@@ -80,13 +80,13 @@
     <nut-form-item label="婚姻状况" prop="maritialStatus">
       <picker
         mode="selector"
-        :range="MaritialStatusOptions.map(i => i.text)"
-        @change="onPickerChange($event, 'maritialStatus', MaritialStatusOptions)"
+        :range="MaritalStatusOptions.map(i => i.text)"
+        @change="onPickerChange($event, 'maritialStatus', MaritalStatusOptions)"
         :value="loanPerson.maritialStatus"
       >
         <my-select-cell>
           <view class="text-black">{{
-            MaritialStatusOptions.find(i => i.value === loanPerson.maritialStatus)?.text ||
+            MaritalStatusOptions.find(i => i.value === loanPerson.maritialStatus)?.text ||
             '请选择婚姻状态'
           }}</view>
         </my-select-cell>
@@ -181,7 +181,7 @@
 <script setup>
 import { formatImgUrl, taroToast, taroFailureToast } from '@/tools/tools'
 import { reactive, ref } from 'vue'
-import { MaritialStatusOptions, EducationOptions, JobOptions, TitleOptions } from '@/tools/static'
+import { MaritalStatusOptions, EducationOptions, JobOptions, TitleOptions } from '@/tools/static'
 import { phoneValidator, emailValidator } from '@/tools/validator'
 import Taro from '@tarojs/taro'
 import { MyAgreementModal } from '@/components/index'

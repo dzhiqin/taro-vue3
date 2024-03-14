@@ -18,7 +18,7 @@ export const idNumValidator = idNum => {
   if (idCardRegex.test(idNum)) {
     return Promise.resolve()
   } else {
-    return Promise.reject('请输入正确格式的手机号')
+    return Promise.reject('请输入正确格式的证件号')
   }
 }
 export const emailValidator = email => {

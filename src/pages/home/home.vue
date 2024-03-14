@@ -108,7 +108,7 @@
         </nut-grid>
       </view>
 
-      <view class="home-manager margin">
+      <!-- <view class="home-manager margin">
         <my-title><view class="text-bold">专属服务</view></my-title>
         <view class="home-manager-content padding flex align-center margin-top-xs radius-sm">
           <nut-avatar size="large"></nut-avatar>
@@ -118,9 +118,9 @@
             <view class="text-slim text-sm">泉州市石狮市北环路3363号</view>
           </view>
         </view>
-      </view>
+      </view> -->
     </view>
-    <view class="home-footer">
+    <view class="home-footer margin-top-xl">
       <img :src="requireImage('logo-ssrcb2.png')" class="home-footer-logo" />
     </view>
     <view class="margin"></view>
@@ -131,9 +131,23 @@ import { requireImage } from '@/tools/tools'
 import HomeGridItem from './components/gridItem'
 import HomeBoxItem from './components/boxItem'
 import Taro from '@tarojs/taro'
+import { useStore } from '@/stores'
+import { computed } from 'vue'
+const auth = useStore('auth')
+const openId = computed(() => auth.userInfo.openId)
+console.log('openId', openId)
 const navToPage = value => {
   Taro.navigateTo({ url: value })
 }
+Taro.getLocation({
+  type: 'wgs84',
+  success(res) {
+    console.log('location', res)
+  },
+  complete(res) {
+    console.log('location complete', res)
+  }
+})
 </script>
 <style lang="scss">
 @import './home.scss';

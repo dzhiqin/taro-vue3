@@ -3,6 +3,7 @@
 import { HttpResponse } from '@/common/interface'
 import Taro from '@tarojs/taro'
 import publicConfig from '@/config/index'
+import config from '@/config/index'
 import axios, {
   AxiosInstance,
   AxiosRequestConfig,
@@ -10,6 +11,7 @@ import axios, {
   Canceler
 } from 'axios-miniprogram'
 import errorHandle from '../common/errorHandle'
+import { isStartWith } from '@/tools/tools'
 const CancelToken = axios.CancelToken
 
 class HttpRequest {
@@ -83,11 +85,22 @@ class HttpRequest {
       }
     )
   }
+  rebuildOptions(insideConfig, options) {
+    if (isStartWith('/wxapi/', options.url)) {
+      options.baseURL =
+        process.env.NODE_ENV === 'development'
+          ? config.baseUrl['wxapi'].dev
+          : config.baseUrl['wxapi'].prod
+      options.url = options.url.split('/wxapi/')[1]
+    }
+    return Object.assign(insideConfig, options)
+  }
 
   // 创建实例
   request(options: AxiosRequestConfig) {
     const instance = axios.create()
-    const newOptions = Object.assign(this.getInsideConfig(), options)
+    // const newOptions = Object.assign(this.getInsideConfig(), options)
+    const newOptions = this.rebuildOptions(this.getInsideConfig(), options)
     this.interceptors(instance)
     return instance(newOptions)
   }

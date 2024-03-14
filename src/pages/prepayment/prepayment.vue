@@ -131,7 +131,7 @@
   </view>
 </template>
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { phoneValidator } from '@/tools/validator'
 import {
   taroFailureToast,
@@ -153,7 +153,10 @@ import { getPrepaymentApplyRecord, addPrepaymentApplyRecord } from '@/apis/prepa
 // const modalChange = () => {
 //   modalVisible.value = false
 // }
-const { openId, code } = taroGetParams()
+import { useStore } from '@/stores'
+const auth = useStore('auth')
+const openId = computed(() => auth.userInfo.openId)
+const { code } = taroGetParams()
 const APPLY_STATUS = {
   pass: '1',
   rejected: '2'
@@ -240,19 +243,18 @@ const formRules = {
 const onSubmit = () => {
   stateForm.value.validate().then(({ valid, errors }) => {
     if (valid) {
-      console.log('errors', errors)
       handleSubmit()
     } else {
+      console.error(errors)
       taroFailureToast('信息不完整')
     }
   })
 }
 const handleSubmit = () => {
-  console.log('submit', state)
   taroShowLoading()
   const params = {
     code,
-    applyOpenId: openId,
+    applyOpenId: openId.value,
     accountType: state.accountType,
     appointmentTime: state.appointmentDate,
     enterpriseName: state.enterpriseName,
@@ -274,8 +276,8 @@ const handleSubmit = () => {
 const blurValidator = prop => {
   stateForm.value.validate(prop)
 }
-getPrepaymentApplyRecord({ applyOpenId: openId }).then(res => {
-  console.log('get record', res)
+getPrepaymentApplyRecord({ applyOpenId: openId.value }).then(res => {
+  // console.log('get record', res)
   if (res.success) {
     hasRecord.value = true
     record = res.result

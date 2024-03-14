@@ -149,7 +149,7 @@ import {
   FinanceRepayTypeOptions,
   RelationshipOptions,
   GuaranteeTypeOptions,
-  MaritialStatusOptions,
+  MaritalStatusOptions,
   idCardRegex,
   phoneNumberRegex
 } from '@/tools/static'
@@ -201,7 +201,7 @@ const contactPhoneValidator = phone => {
   }
 }
 const contactIdNumValidator = idNum => {
-  if (loanInfo.maritialStatus !== MaritialStatusOptions.find(i => i.text === '已婚')?.value) {
+  if (loanInfo.maritialStatus !== MaritalStatusOptions.find(i => i.text === '已婚')?.value) {
     return Promise.resolve()
   }
   if (idNum) {
@@ -225,7 +225,7 @@ const cardNoValidator = cardNo => {
   }
 }
 const relationshipValidator = relationship => {
-  if (loanInfo.maritialStatus !== MaritialStatusOptions.find(i => i.text === '已婚')?.value) {
+  if (loanInfo.maritialStatus !== MaritalStatusOptions.find(i => i.text === '已婚')?.value) {
     return Promise.resolve()
   } else {
     if (relationship === RelationshipOptions.find(i => i.text === '配偶')?.value) {
