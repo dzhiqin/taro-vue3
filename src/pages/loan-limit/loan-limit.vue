@@ -58,9 +58,6 @@
             v-model="state.phone"
             @blur="blurValidator('phone')"
           >
-            <template #right>
-              <my-sms-btn :phone="state.phone" type="personal" />
-            </template>
           </nut-input>
         </nut-form-item>
         <nut-form-item label="验证码" prop="sms">
@@ -69,7 +66,11 @@
             placeholder="请输入验证码"
             type="text"
             v-model="state.sms"
-          />
+          >
+            <template #right>
+              <my-sms-btn :phone="state.phone" type="personal" />
+            </template>
+          </nut-input>
         </nut-form-item>
 
         <nut-form-item label="是否缴纳社保或公积金" :label-width="180" prop="hasSocialSecurity">

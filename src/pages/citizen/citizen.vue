@@ -31,7 +31,7 @@
       <apply-option>现居住或工作在石狮，并且超过12个月</apply-option>
     </view>
     <view class="citizen-product">
-      <my-title><view class="text-bold">产品</view></my-title>
+      <my-title><view class="text-bold">产品详情</view></my-title>
       <view class="radius padding bg-white margin-top">
         <view class="flex align-center">
           <my-tag><view class="text-slim">信用贷</view></my-tag>

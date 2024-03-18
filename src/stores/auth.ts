@@ -4,6 +4,13 @@ interface UserInfoProp {
   nickName: string
   avatarUrl: string
   openId: string
+  id: string
+  managerId: string
+  managerName: string
+  managerDept: string
+  latitude: string
+  longitude: string
+  name: string
 }
 
 const useAuth = defineStore({

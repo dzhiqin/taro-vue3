@@ -85,7 +85,7 @@
         >
         </nut-input>
       </nut-form-item>
-      <nut-form-item label="预约还款日期" :label-width="110" prop="appointmentDate">
+      <nut-form-item label="预约还款日期" :label-width="120" prop="appointmentDate">
         <view class="nut-input-text" @click="calendarVisible = true">
           <my-select-cell>
             {{ state.appointmentDate || '请选择日期' }}
@@ -102,7 +102,7 @@
         </nut-calendar>
         <view class="text-sm">只能预约30天后的日期</view>
       </nut-form-item>
-      <nut-form-item label="提前还款理由" :label-width="110" prop="reason">
+      <nut-form-item label="提前还款理由" :label-width="120" prop="reason">
         <nut-input
           v-model="state.reason"
           type="text"
@@ -111,7 +111,7 @@
           placeholder="请填写理由"
         />
       </nut-form-item>
-      <nut-form-item label="提前还款金额" :label-width="110" prop="prepaymentSum">
+      <nut-form-item label="提前还款金额" :label-width="120" prop="prepaymentSum">
         <nut-input
           v-model="state.prepaymentSum"
           type="digit"

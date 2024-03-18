@@ -984,9 +984,7 @@ export const occupations = [
       {
         text: '军人',
         value: '军人',
-        children: [
-          { text: { value: '军人', text: '军人' }, value: { value: '军人', text: '军人' } }
-        ]
+        children: [{ text: '军人', value: '军人' }]
       }
     ]
   }

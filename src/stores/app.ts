@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 const useApp = defineStore({
   id: 'app',
   state: () => ({
-    screenLoading: false
+    screenLoading: false,
+    pageUrl: ''
   }),
   actions: {
     startScreenLoading() {
@@ -11,6 +12,9 @@ const useApp = defineStore({
     },
     cancelScreenLoading() {
       this.screenLoading = false
+    },
+    setPageUrl(url) {
+      this.pageUrl = url
     }
   }
 })

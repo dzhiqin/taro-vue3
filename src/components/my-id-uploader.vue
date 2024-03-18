@@ -74,7 +74,7 @@ const handleOcr = () => {
     filename: imgTemp.value
   }).then(res => {
     taroHideLoading()
-    console.log('ocr = ', res)
+    // console.log('ocr = ', res)
     if (res.code === 400) {
       isError.value = true
       errMsg.value = isBack.value ? '背面扫描失败，请重新上传' : '正面扫描失败，请重新上传'
@@ -96,7 +96,6 @@ const handleShowPreview = () => {
   showPreview.value = true
 }
 const handleClose = () => {
-  console.log('on close')
   showPreview.value = false
 }
 const handleClear = () => {

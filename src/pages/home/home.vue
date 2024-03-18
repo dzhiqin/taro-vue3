@@ -39,7 +39,7 @@
           title="信息完善"
           path="/packs/identity-info/identity-info"
         />
-        <home-box-item imgName="loan.png" title="新市民贷" />
+        <home-box-item imgName="loan.png" title="新市民贷" path="/pages/citizen/citizen" />
         <home-box-item imgName="icon-card@2x.png" title="普惠卡申领" />
         <home-box-item imgName="usercard.png" title="社保卡" />
         <!-- <home-box-item imgName="shop.png" title="商户" /> -->
@@ -108,33 +108,63 @@
         </nut-grid>
       </view>
 
-      <!-- <view class="home-manager margin">
+      <view class="home-manager margin" v-if="userInfo.managerName">
         <my-title><view class="text-bold">专属服务</view></my-title>
-        <view class="home-manager-content padding flex align-center margin-top-xs radius-sm">
-          <nut-avatar size="large"></nut-avatar>
+        <view class="home-manager-content padding flex align-center margin-top-xs">
+          <nut-avatar size="large">
+            <img :src="userInfo.avatarUrl" class="round" />
+          </nut-avatar>
           <view class="margin-left">
-            <view class="text-size-lg text-bold">陈先生</view>
-            <view class="text-slim">港塘支行 - 金融专员</view>
-            <view class="text-slim text-sm">泉州市石狮市北环路3363号</view>
+            <view class="text-size-lg text-bold">{{ userInfo.managerName }}</view>
+            <view class="text-slim">{{ userInfo.managerDept }} - 金融专员</view>
+            <view class="text-slim text-sm">{{ userInfo.branchAddress }}</view>
           </view>
         </view>
-      </view> -->
+        <view class="flex home-manager-footer">
+          <view
+            class="flex-1 flex justify-center align-center"
+            @click="navToPage('/pages/branch-list/branch-list')"
+          >
+            <Location2 color="#0081ff" />
+            <div class="text-blue">网点导航</div>
+          </view>
+          <!-- <view>
+            <nut-divider direction="vertical" />
+          </view>
+          <view class="flex-1 flex justify-center align-center">
+            <div>网点</div>
+          </view> -->
+        </view>
+      </view>
+
+      <view class="home-ad">
+        <img
+          :src="formatImgUrl('weapp/temp7689673923801406435img-citizen-loan-ad_1710407295700.png')"
+          class="home-ad-img"
+          @click="navToAd('https://ssrcb.fjnx.com.cn/jcgfprod/xsm/new_citizen.html')"
+        />
+      </view>
     </view>
-    <view class="home-footer margin-top-xl">
+    <div class="home-footer">
       <img :src="requireImage('logo-ssrcb2.png')" class="home-footer-logo" />
-    </view>
+    </div>
+
     <view class="margin"></view>
   </view>
 </template>
 <script setup>
-import { requireImage } from '@/tools/tools'
+import { formatImgUrl, requireImage } from '@/tools/tools'
 import HomeGridItem from './components/gridItem'
 import HomeBoxItem from './components/boxItem'
 import Taro from '@tarojs/taro'
 import { useStore } from '@/stores'
 import { computed } from 'vue'
+import { Location2 } from '@nutui/icons-vue-taro'
 const auth = useStore('auth')
 const openId = computed(() => auth.userInfo.openId)
+const app = useStore('app')
+
+const userInfo = computed(() => auth.userInfo)
 console.log('openId', openId)
 const navToPage = value => {
   Taro.navigateTo({ url: value })
@@ -148,6 +178,10 @@ Taro.getLocation({
     console.log('location complete', res)
   }
 })
+const navToAd = url => {
+  app.setPageUrl(url)
+  Taro.navigateTo({ url: '/pages/webview/webview' })
+}
 </script>
 <style lang="scss">
 @import './home.scss';
@@ -158,6 +192,14 @@ Taro.getLocation({
   }
   .nut-swiper {
     border-radius: 10px;
+  }
+  &-ad {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    &-img {
+      width: 100%;
+      height: 97px;
+    }
   }
 }
 </style>

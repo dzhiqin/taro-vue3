@@ -93,6 +93,10 @@ class HttpRequest {
           : config.baseUrl['wxapi'].prod
       options.url = options.url.split('/wxapi/')[1]
     }
+    if (isStartWith('/mock/', options.url)) {
+      options.baseURL = 'http://127.0.0.1:4523/m1/4110255-0-default'
+      options.url = options.url.split('/mock/')[1]
+    }
     return Object.assign(insideConfig, options)
   }
 

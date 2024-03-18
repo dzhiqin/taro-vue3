@@ -34,3 +34,9 @@ export const addLoanApplyRecord = (data: {
 }) => {
   return request.post('/api/easy/custRegInfo/add', {}, data)
 }
+export const devGetAllBranches = () => {
+  return request.get('/dev/ssrcb/getAllBranches')
+}
+export const ssrcbGetUserInfo = () => {
+  return request.get('/mock/ssrcb/getUserInfo')
+}

@@ -12,7 +12,11 @@ export default {
     'pages/prepayment/prepayment',
     'pages/create/index',
     'pages/find/index',
-    'pages/my/index'
+    'pages/my/index',
+    'pages/face-webview/face-webview',
+    'pages/webview/webview',
+    'pages/map/map',
+    'pages/branch-list/branch-list'
   ],
   window: {
     backgroundColor: '#fff',

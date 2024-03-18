@@ -31,6 +31,9 @@ page {
 .flex{
   display: flex;
 }
+.flex-1{
+  flex:1;
+}
 .flex-grow-1{
   flex-grow: 1;
 }
@@ -246,5 +249,8 @@ page {
   width: 298px;
   height: 58px;
   margin: auto;
+}
+.round{
+  border-radius: 50%;
 }
 // 解决iPhone x 以后的机型 底部安全区域的问题 https://jelly.jd.com/article/6006b1055b6c6a01506c87fd
