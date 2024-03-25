@@ -1,7 +1,7 @@
 const baseUrl = {
-  dev: 'https://jcgb.ssrcb.com/jcgbprod', //测试环境
+  // dev: 'https://jcgb.ssrcb.com/jcgbprod', //测试环境
   // dev: 'https://jcgb.ssrcb.com/jcgprodes/testproxy',
-  // dev: 'https://ssrcb.fjnx.com.cn/jcgprodes/proxy',
+  dev: 'https://ssrcb.fjnx.com.cn/jcgprodes/proxy',
   prod: 'https://ssrcb.fjnx.com.cn/jcgprodes/proxy',
   wxapi: {
     dev: 'http://121.37.7.190:3000',

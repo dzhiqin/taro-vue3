@@ -12,7 +12,10 @@ export const getUpdatePersonalSms = (params: { phone: string }) => {
   return request.post('/api/person/personInfo/getMsg', params)
 }
 export const getAllLoanProducts = () => {
-  return request.post('/api/pub/dict/getDictItems', {}, { dictCode: 'prod_type' })
+  return request.post('/api/pub/dict/getDictItems', {}, { dictCode: 'prod_type_post' })
+}
+export const queryDictByCodes = (params: { codes: string }) => {
+  return request.post('/sys/api/queryEnableDictItemsByCodes', params)
 }
 export const getAllEstates = () => {
   return request.post('/api/pub/dict/getDictItems', {}, { dictCode: 'living' })

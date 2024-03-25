@@ -26,30 +26,63 @@
           </nut-swiper-item>
         </nut-swiper>
       </view>
-      <nut-grid class="home-grid" :column-num="3" :border="false" gutter="20">
-        <home-box-item
-          imgName="icon-business-loan.png"
-          title="创业担保贷"
-          path="/pages/business/business"
-        />
-        <home-box-item imgName="huikuan.png" title="提前还款" path="/pages/prepayment/prepayment" />
+      <view class="panel bg-white margin radius">
+        <my-title class="padding-top padding-left"
+          ><view class="text-bold">线上申贷</view></my-title
+        >
+        <nut-grid class="" :column-num="4" :border="false">
+          <home-box-item
+            imgName="icon-card@2x.png"
+            title="信用卡申请"
+            path="/pages/citizen/citizen"
+          />
+          <home-box-item imgName="loan.png" title="新市民贷" path="/pages/citizen/citizen" />
+          <home-box-item
+            imgName="icon-business-loan.png"
+            title="创业担保贷"
+            path="/pages/business/business"
+          />
+          <home-box-item
+            imgName="icon-list.png"
+            title="贷款需求采集"
+            path="/pages/citizen/citizen"
+          />
+        </nut-grid>
+      </view>
+      <view class="panel bg-white radius margin">
+        <my-title class="padding-top padding-left">
+          <view class="text-bold">业务办理</view>
+        </my-title>
+        <nut-grid class="" :column-num="4" :border="false">
+          <home-box-item
+            imgName="huikuan.png"
+            title="还款预约"
+            path="/pages/prepayment/prepayment"
+          />
 
-        <home-box-item
-          imgName="icon-fill-info@2x.png"
-          title="信息完善"
-          path="/packs/identity-info/identity-info"
-        />
-        <home-box-item imgName="loan.png" title="新市民贷" path="/pages/citizen/citizen" />
-        <home-box-item imgName="icon-card@2x.png" title="普惠卡申领" />
-        <home-box-item imgName="usercard.png" title="社保卡" />
-        <!-- <home-box-item imgName="shop.png" title="商户" /> -->
-        <!-- <home-box-item imgName="etccar.png" title="ETC" /> -->
-        <!-- <home-box-item imgName="zhengxin.png" title="征信查询" /> -->
-        <!-- <home-box-item imgName="bankcard.png" title="贷记卡申领" /> -->
-        <!-- <home-box-item imgName="invoice.png" title="发票打印" /> -->
-        <!-- <home-box-item imgName="estimate.png" title="风险评估" /> -->
-      </nut-grid>
-
+          <home-box-item
+            imgName="icon-fill-info@2x.png"
+            title="信息完善"
+            path="/packs/identity-info/identity-info"
+          />
+        </nut-grid>
+      </view>
+      <view class="panel bg-white radius margin">
+        <my-title class="padding-top padding-left">
+          <view class="text-bold">产品推荐</view>
+        </my-title>
+        <view class="flex padding-tb">
+          <!-- <view class="flex-1 bg-blue">123</view> -->
+          <view class="prod-item flex align-center bg-yellow">
+            <img :src="requireImage('icon-loan2.png')" class="prod-item-img" />
+            <view class="text-normal margin-left">贷款</view>
+          </view>
+          <view class="prod-item flex align-center bg-red">
+            <img :src="requireImage('icon-money2.png')" class="prod-item-img" />
+            <view class="text-normal margin-left">存款</view>
+          </view>
+        </view>
+      </view>
       <view v-show="false" class="home-panel" style="background: rgba(243, 84, 33, 0.15)">
         <view class="home-panel-head flex align-center">
           <img :src="requireImage('card.png')" class="home-panel-image" />
@@ -70,12 +103,35 @@
         </nut-grid>
       </view>
 
+      <!-- <view class="home-panel bg-white">
+        <view class="home-panel-head flex align-center bg-blue">
+          <img :src="requireImage('chart.png')" class="home-panel-image" />
+          <view>
+            <view>主打产品</view>
+            <view class="text-gray">Main products</view>
+          </view>
+        </view>
+        <view class="flex margin-top">
+          <view class="home-panel-item">
+            <img :src="requireImage('icon-loan2.png')" class="" style="width: 42px; height: 42px" />
+            <view class="text-normal margin-left">贷款</view>
+          </view>
+          <view class="home-panel-item margin-left">
+            <img
+              :src="requireImage('icon-money2.png')"
+              class=""
+              style="width: 42px; height: 42px"
+            />
+            <view class="text-normal margin-left">存款</view>
+          </view>
+        </view>
+      </view> -->
       <view v-show="false" class="home-panel" style="background: rgba(144, 200, 252, 0.15)">
         <view class="home-panel-head flex align-center">
           <img :src="requireImage('chart.png')" class="home-panel-image" />
           <view>
             <view>金融服务</view>
-            <view class="text-gray">Money transition</view>
+            <view class="text-gray">Main products</view>
           </view>
         </view>
         <nut-grid :border="false" class="margin-top">
@@ -107,44 +163,42 @@
           <home-grid-item imgName="Group-location.png" title="网点导航"></home-grid-item>
         </nut-grid>
       </view>
-
-      <view class="home-manager margin" v-if="userInfo.managerName">
-        <my-title><view class="text-bold">专属服务</view></my-title>
-        <view class="home-manager-content padding flex align-center margin-top-xs">
-          <nut-avatar size="large">
-            <img :src="userInfo.avatarUrl" class="round" />
-          </nut-avatar>
-          <view class="margin-left">
-            <view class="text-size-lg text-bold">{{ userInfo.managerName }}</view>
-            <view class="text-slim">{{ userInfo.managerDept }} - 金融专员</view>
-            <view class="text-slim text-sm">{{ userInfo.branchAddress }}</view>
+      <view class="panel bg-white radius margin">
+        <my-title class="padding-top padding-left">
+          <view class="text-bold">网点导航</view>
+        </my-title>
+        <view class="padding">
+          <view class="home-manager-content padding flex align-center margin-top-xs">
+            <nut-avatar size="large">
+              <img :src="userInfo.avatarUrl" class="round" />
+            </nut-avatar>
+            <view class="margin-left">
+              <view class="text-size-lg text-bold">{{ userInfo.managerName }}</view>
+              <view class="text-slim">{{ userInfo.managerDept }} - 金融专员</view>
+              <view class="text-slim text-sm">{{ userInfo.branchAddress }}</view>
+            </view>
           </view>
-        </view>
-        <view class="flex home-manager-footer">
-          <view
-            class="flex-1 flex justify-center align-center"
-            @click="navToPage('/pages/branch-list/branch-list')"
-          >
-            <Location2 color="#0081ff" />
-            <div class="text-blue">网点导航</div>
-          </view>
-          <!-- <view>
+          <view class="flex home-manager-footer bg-yellow">
+            <view
+              class="flex-1 flex justify-center align-center"
+              @click="navToPage('/pages/branch-list/branch-list')"
+            >
+              <Location2 color="#0081ff" />
+              <div class="text-blue">附近网点</div>
+            </view>
+            <!-- <view>
             <nut-divider direction="vertical" />
           </view>
           <view class="flex-1 flex justify-center align-center">
             <div>网点</div>
           </view> -->
+          </view>
         </view>
       </view>
-
-      <view class="home-ad">
-        <img
-          :src="formatImgUrl('weapp/temp7689673923801406435img-citizen-loan-ad_1710407295700.png')"
-          class="home-ad-img"
-          @click="navToAd('https://ssrcb.fjnx.com.cn/jcgfprod/xsm/new_citizen.html')"
-        />
-      </view>
     </view>
+
+    <!-- <view @click="handleClick">click me</view> -->
+
     <div class="home-footer">
       <img :src="requireImage('logo-ssrcb2.png')" class="home-footer-logo" />
     </div>
@@ -153,7 +207,7 @@
   </view>
 </template>
 <script setup>
-import { formatImgUrl, requireImage } from '@/tools/tools'
+import { requireImage } from '@/tools/tools'
 import HomeGridItem from './components/gridItem'
 import HomeBoxItem from './components/boxItem'
 import Taro from '@tarojs/taro'
@@ -162,10 +216,9 @@ import { computed } from 'vue'
 import { Location2 } from '@nutui/icons-vue-taro'
 const auth = useStore('auth')
 const openId = computed(() => auth.userInfo.openId)
-const app = useStore('app')
-
 const userInfo = computed(() => auth.userInfo)
 console.log('openId', openId)
+// const app = useStore('app')
 const navToPage = value => {
   Taro.navigateTo({ url: value })
 }
@@ -178,28 +231,25 @@ Taro.getLocation({
     console.log('location complete', res)
   }
 })
-const navToAd = url => {
-  app.setPageUrl(url)
-  Taro.navigateTo({ url: '/pages/webview/webview' })
-}
+// const handleClick = () => {
+//   app.setPageUrl(
+//     // 'https://wx106.bestsign.info/fe/intf/v2/#/signPage?developerId=1585626842014078682&rtick=1711071243430874&signType=token&sign=eyJkZXZlbG9wZXJJZCI6IjE1ODU2MjY4NDIwMTQwNzg2ODIiLCJjYXRhbG9nSWQiOiIzNzk1NzM1NzcxNTcyNTcwMTIwIiwiY29udHJhY3RJZCI6IiIsImV4cGlyZUF0IjoiMTcxMTY3NjA0MyIsImFjY291bnQiOiIzNTA2MjgxOTk4MTIyNzM1MTUifS4xNzExMDcxMjQzNDMwOTI1OQ__.6c856fe81f8d4ad70c5aee6c9354eee4&catalogId=3795735771572570120&signerAccount=350628199812273515&dpi=96&sid='
+//     'https://wx106.bestsign.info/fe/intf/v2/#/signPage?developerId=1585626842014078682&rtick=1711094574866732&signType=token&sign=eyJkZXZlbG9wZXJJZCI6IjE1ODU2MjY4NDIwMTQwNzg2ODIiLCJjYXRhbG9nSWQiOiI4MDA3MTMyNzQ5OTE2MzQ0MzczIiwiY29udHJhY3RJZCI6IiIsImV4cGlyZUF0IjoiMTcxMTY5OTM3NCIsImFjY291bnQiOiIzNTA1ODExOTg2MTExMTA1MzUifS4xNzExMDk0NTc0ODY2OTA0Mg__.36ecaa60377bc7f070897082b98f89aa&catalogId=8007132749916344373&signerAccount=350581198611110535&dpi=96&sid=&asyn=0&showDefault=0'
+//   )
+//   Taro.navigateTo({ url: '/pages/webview/webview' })
+// }
 </script>
 <style lang="scss">
 @import './home.scss';
 
 .home {
   .nut-grid-item__content {
-    border-radius: 10px;
+    // border-radius: 10px;
+    padding-left: 0;
+    padding-right: 0;
   }
   .nut-swiper {
     border-radius: 10px;
-  }
-  &-ad {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    &-img {
-      width: 100%;
-      height: 97px;
-    }
   }
 }
 </style>

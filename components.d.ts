@@ -28,7 +28,6 @@ declare module 'vue' {
     NutCheckbox: typeof import('@nutui/nutui-taro')['Checkbox']
     NutCountdown: typeof import('@nutui/nutui-taro')['Countdown']
     NutDialog: typeof import('@nutui/nutui-taro')['Dialog']
-    NutDivider: typeof import('@nutui/nutui-taro')['Divider']
     NutForm: typeof import('@nutui/nutui-taro')['Form']
     NutFormItem: typeof import('@nutui/nutui-taro')['FormItem']
     NutGrid: typeof import('@nutui/nutui-taro')['Grid']

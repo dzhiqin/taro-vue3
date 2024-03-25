@@ -110,3 +110,5 @@ export const MaritalStatusOptions = [
   { value: '3', text: '离异', label: '离异', title: '离异' },
   { value: '4', text: '丧偶', label: '丧偶', title: '丧偶' }
 ]
+export const POSTER_PROD_DICT = 'prod_type_post'
+export const ESTATE_DICT = 'living'

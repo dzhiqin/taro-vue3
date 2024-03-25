@@ -44,7 +44,7 @@
               >日费率低至<text class="text-red">0.02%</text></view
             >
           </view>
-          <view class="primary-button-sm" @click="navToProduct('普惠信用贷')">点击办理</view>
+          <view class="primary-button-sm" @click="navToProduct('普惠信用贷')">申请办理</view>
         </view>
         <view class="flex align-center margin-top-sm">
           <my-tag color="red"><view class="text-white text-sm">授信期限3年</view></my-tag>
@@ -65,7 +65,7 @@
               >日费率低至<text class="text-red">0.02%</text></view
             >
           </view>
-          <view class="primary-button-sm" @click="navToProduct('普惠金融卡')">点击办理</view>
+          <view class="primary-button-sm" @click="navToProduct('普惠金融卡')">申请办理</view>
         </view>
         <view class="flex align-center margin-top-sm">
           <my-tag color="red"><view class="text-white text-sm">授信期限3年</view></my-tag>
@@ -86,7 +86,7 @@
               >日费率低至<text class="text-red">0.02%</text></view
             >
           </view>
-          <view class="primary-button-sm" @click="navToProduct('房产抵押贷')">点击办理</view>
+          <view class="primary-button-sm" @click="navToProduct('业主全额贷')">申请办理</view>
         </view>
         <view class="flex align-center margin-top-sm">
           <my-tag color="red"><view class="text-white text-sm">授信期限3年</view></my-tag>
@@ -94,6 +94,13 @@
           <my-tag color="red"><view class="text-white text-sm">快速审批</view></my-tag>
         </view>
       </view>
+    </view>
+    <view class="citizen-ad">
+      <img
+        :src="formatImgUrl('weapp/temp7689673923801406435img-citizen-loan-ad_1710407295700.png')"
+        class="citizen-ad-img"
+        @click="navToAd('https://ssrcb.fjnx.com.cn/jcgfprod/xsm/new_citizen.html')"
+      />
     </view>
     <view class="padding-tb">
       <img :src="requireImage('logo-ssrcb2.png')" class="logo-bottom margin-auto flex" />
@@ -103,13 +110,23 @@
 <script setup>
 import MyTag from '@/components/my-tag'
 import ApplyOption from './components/apply-option.vue'
-import { requireImage, taroNavigateToPage } from '@/tools/tools'
+import { requireImage, taroNavigateToPage, formatImgUrl } from '@/tools/tools'
 import Taro from '@tarojs/taro'
+import { useStore } from '@/stores'
+const app = useStore('app')
 const navToPage = () => {
   Taro.navigateTo({ url: '/pages/loan-limit/loan-limit' })
 }
 const navToProduct = prodName => {
   taroNavigateToPage(`/pages/loan-apply/loan-apply?prodName=${prodName}`)
+}
+const navToAd = url => {
+  app.setPageUrl(url)
+  // 跳转公众号文章目录
+  // app.setPageUrl(
+  //   'https://mp.weixin.qq.com/mp/homepage?__biz=MzA4NDAzMTQwMQ==&hid=3&sn=843b6bece5e386afd986151be1a1eb9f&uin=&key=&devicetype=iOS17.3.1&version=18002f2c&lang=zh_CN&ascene=7&scene=1&nettype=3G+&session_us=gh_a7246011bf23&fontScale=100'
+  // )
+  Taro.navigateTo({ url: '/pages/webview/webview' })
 }
 </script>
 <style lang="scss">
@@ -122,6 +139,14 @@ const navToProduct = prodName => {
   background-size: 100% 100%;
   box-sizing: border-box;
   padding: 16px;
+  &-ad {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    &-img {
+      width: 100%;
+      height: 97px;
+    }
+  }
   &-apply {
     background: linear-gradient(180deg, rgba(255, 248, 247, 1) 0%, rgba(245, 221, 209, 1) 100%);
     width: 346px;

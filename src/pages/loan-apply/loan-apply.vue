@@ -9,6 +9,9 @@
         <nut-step title="专员服务">2</nut-step>
         <nut-step title="处理完成">3</nut-step>
       </nut-steps>
+      <view v-if="imgUrl" class="flex justify-center">
+        <img :src="imgUrl" class="loan-poster" />
+      </view>
       <my-title><view class="text-bold">信息填写</view></my-title>
       <nut-form ref="stateForm" :model-value="state" :rules="formRules">
         <nut-form-item label="姓名" prop="name">
@@ -90,7 +93,7 @@
   </view>
 </template>
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { phoneValidator } from '@/tools/validator'
 import {
   taroFailureToast,
@@ -98,10 +101,12 @@ import {
   taroHideLoading,
   taroRedirectToPage,
   taroToast,
-  taroGetParams
+  taroGetParams,
+  formatImgUrl
 } from '@/tools/tools'
 import { MySelectCell } from '@/components/index'
-import { getAllLoanProducts, getAllEstates, addLoanApplyRecord } from '@/apis/common.api'
+import { queryDictByCodes, addLoanApplyRecord } from '@/apis/common.api'
+import { POSTER_PROD_DICT, ESTATE_DICT } from '@/tools/static'
 import { chineseNameValidator } from '@/tools/validator'
 const params = taroGetParams()
 const estatesVisible = ref(false)
@@ -120,7 +125,15 @@ const customValidator = residence => {
     return Promise.resolve()
   }
 }
-
+const imgUrl = computed(() => {
+  if (state.prodName === '普惠金融卡')
+    return formatImgUrl('weapp/temp8959732256387195208img-inclusive-card_1711006072604.jpeg')
+  if (state.prodName === '普惠信用贷')
+    return formatImgUrl('weapp/temp3077245658373927264img-inclusive-credit-loan_1711006838379.jpeg')
+  if (state.prodName === '业主全额贷')
+    return formatImgUrl('weapp/temp2789260841121167323img-owner-loan_1711006888405.jpeg')
+  return ''
+})
 const formRules = {
   name: [
     { required: true, message: '请填写姓名' },
@@ -191,24 +204,13 @@ const handleSubmit = () => {
     }
   })
 }
-getAllLoanProducts()
-  .then(val => {
-    if (val.success) {
-      loanProducts.value = val.result.prod_type
-      if (params.prodName) {
-        state.product = loanProducts.value.find(i => i.text === params.prodName).value
-      }
-    }
-    getAllEstates().then(res => {
-      console.log('estate', res)
-      if (res.success) {
-        estates.value = res.result.living
-      }
-    })
-  })
-  .catch(err => {
-    taroToast('获取数据失败' + err.message)
-  })
+queryDictByCodes({ codes: `${POSTER_PROD_DICT},${ESTATE_DICT}` }).then(res => {
+  loanProducts.value = res.find(i => i.code === POSTER_PROD_DICT).dictModelList
+  if (state.prodName) {
+    state.product = loanProducts.value.find(i => i.text === params.prodName).value
+  }
+  estates.value = res.find(i => i.code === ESTATE_DICT).dictModelList
+})
 </script>
 <style lang="scss">
 .loan {
@@ -216,6 +218,10 @@ getAllLoanProducts()
   background-repeat: no-repeat;
   background-size: 100%;
   min-height: 100vh;
+  &-poster {
+    width: 300px;
+    height: 420px;
+  }
   &-content {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
